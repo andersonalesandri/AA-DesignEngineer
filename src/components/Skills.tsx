@@ -116,7 +116,7 @@ export default function Skills() {
           <span className="gradient-text-cool">Engenharia. Automação.</span>
         </h2>
         <p className="lede">
-          Mais de 15 anos transitando entre design visual, front-end e infraestrutura
+          Mais de 12 anos transitando entre design visual, front-end e infraestrutura
           de automação — a combinação que sustenta cada entrega.
         </p>
       </Reveal>

@@ -20,7 +20,7 @@ export default function Hero() {
       <Reveal>
         <span className="pill">
           <span className="pill-dot" />
-          DISPONÍVEL PARA PROJETOS · 15+ ANOS DE EXPERIÊNCIA
+          DISPONÍVEL PARA PROJETOS · +12 ANOS DE EXPERIÊNCIA
         </span>
 
         <h1 className="hero-name" style={{ marginTop: 28 }}>
@@ -37,7 +37,7 @@ export default function Hero() {
         </h2>
 
         <p className="lede">
-          Especialista em interface e engenharia front-end com mais de 15 anos de atuação,
+          Especialista em interface e engenharia front-end com mais de 12 anos de atuação,
           na ponte entre Design (UI/UX), Engenharia de Software e Infraestrutura Cloud —
           arquitetando Design Systems, componentização flexível e automação de fluxos com
           agentes de IA, sempre com aderência estética pixel-perfect, acessibilidade e
@@ -47,7 +47,7 @@ export default function Hero() {
         <div className="hero-stats">
           <div>
             <div className="stat-label">Experiência</div>
-            <div className="stat-value">15+ Anos</div>
+            <div className="stat-value">+12 Anos</div>
           </div>
           <div>
             <div className="stat-label">Foco</div>
