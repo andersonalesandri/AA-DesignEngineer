@@ -34,6 +34,7 @@ const DETAIL = [
     group: "Automação & Cloud",
     color: "#35d68e",
     items: [
+      { name: "IA First (Metodologia)", pct: 93 },
       { name: "Orquestração de Agentes de IA", pct: 87 },
       { name: "n8n", pct: 89 },
       { name: "Webhooks & Integrações", pct: 85 },
