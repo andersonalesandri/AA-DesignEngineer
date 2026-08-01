@@ -3,14 +3,13 @@ import Reveal from "./Reveal";
 
 const TOOLS = [
   { name: "Figma", level: "Avançado", color: "#4f7bff" },
-  { name: "Penpot", level: "Avançado", color: "#4f7bff" },
   { name: "Photoshop / Illustrator", level: "Avançado", color: "#9b6bff" },
   { name: "WordPress / Elementor", level: "Avançado", color: "#35d68e" },
   { name: "n8n / Make", level: "Proficiente", color: "#f5a623" },
 ];
 
 const FLOW = [
-  { title: "Design & Prototipação", desc: "Figma / Penpot, alta fidelidade" },
+  { title: "Design & Prototipação", desc: "Figma, alta fidelidade" },
   { title: "Design Tokens", desc: "Tokens em JSON/CSS, base do sistema" },
   { title: "Componentização", desc: "Arquitetura de componentes web" },
   { title: "Automação com IA", desc: "Agentes de IA orquestrados em nuvem" },
@@ -24,7 +23,6 @@ const STACK = [
   "Design Tokens",
   "Webhooks",
   "n8n",
-  "Make",
   "GTM",
   "GA4",
   "Meta Ads",

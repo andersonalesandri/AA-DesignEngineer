@@ -1,5 +1,7 @@
 import { useTypewriter } from "../hooks/useTypewriter";
 import Reveal from "./Reveal";
+import OrbitSystem from "./OrbitSystem";
+import ScrollHint from "./ScrollHint";
 
 const WHATSAPP_URL = "https://wa.me/5521997836113";
 
@@ -14,6 +16,7 @@ export default function Hero() {
 
   return (
     <section id="home" className="section hero">
+      <OrbitSystem />
       <Reveal>
         <span className="pill">
           <span className="pill-dot" />
@@ -74,6 +77,7 @@ export default function Hero() {
           </a>
         </div>
       </Reveal>
+      <ScrollHint />
     </section>
   );
 }

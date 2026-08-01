@@ -43,7 +43,7 @@ const DETAIL = [
     group: "Design Suite & Analytics",
     color: "#33c9d6",
     items: [
-      { name: "Figma / Penpot", pct: 95 },
+      { name: "Figma", pct: 95 },
       { name: "Photoshop / Illustrator", pct: 90 },
       { name: "SEO Técnico / GTM / GA4", pct: 86 },
       { name: "Meta Ads / Performance Web", pct: 80 },

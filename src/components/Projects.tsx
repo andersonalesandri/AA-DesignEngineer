@@ -79,8 +79,16 @@ export default function Projects() {
 
       <div className="projects-grid">
         {PROJECTS.map((project, i) => (
-          <Reveal key={i} delay={(i % 2) * 90}>
-            <div className="card card-placeholder">
+          <Reveal key={i} delay={(i % 2) * 90} className="project-card-reveal">
+            <div
+              className="card card-placeholder project-card"
+              style={
+                {
+                  "--accent": project.color,
+                  "--accent-glow": `${project.color}40`,
+                } as React.CSSProperties
+              }
+            >
               <div className="project-card-head">
                 <div
                   className="project-icon"
@@ -103,7 +111,9 @@ export default function Projects() {
               <div className="project-stats">
                 {project.stats.map((s) => (
                   <div key={s.label} className="project-stat">
-                    <div className="project-stat-value">{s.value}</div>
+                    <div className="project-stat-value" style={{ color: project.color }}>
+                      {s.value}
+                    </div>
                     <div className="project-stat-label">{s.label}</div>
                   </div>
                 ))}

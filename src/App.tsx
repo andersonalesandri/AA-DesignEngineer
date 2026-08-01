@@ -11,6 +11,7 @@ import Contact from "./components/Contact";
 export default function App() {
   return (
     <div className="app">
+      <div className="bg-ambient" />
       <ParticleCanvas />
       <Nav />
       <Hero />
