@@ -1,10 +1,26 @@
-// Preencha cada objeto abaixo com um projeto real: troque title, subtitle, description,
-// stats e tags. Duplique o bloco para adicionar mais cards.
+// Adicione novos objetos a este array para criar mais cards de projeto.
 import Reveal from "./Reveal";
 
 const PROJECTS = [
   {
     icon: "◆",
+    color: "#da7756",
+    title: "IA na Prática",
+    subtitle: "Imersão ao Vivo de Automação com IA",
+    description:
+      "Landing page de uma imersão presencial ao vivo de 2 dias para empreendedores, profissionais de marketing e iniciantes em IA sem experiência técnica. Ensina automação de conteúdo e criação de projetos reais usando Claude e Claude Code, do primeiro prompt ao repositório versionado no GitHub.",
+    stats: [
+      { value: "2", label: "Dias de Imersão" },
+      { value: "8", label: "Blocos Práticos" },
+      { value: "14h", label: "Carga Horária" },
+    ],
+    tags: ["HTML5", "CSS3", "JavaScript", "Claude Code"],
+    link: "https://ianapratica-three.vercel.app/",
+    status: "No Ar (Projeto em Andamento)",
+    statusColor: "#35d68e",
+  },
+  {
+    icon: "⬡",
     color: "#C5973E",
     title: "Christian Vieira — Corretor Imobiliário",
     subtitle: "Site Institucional de Alta Conversão · Rio de Janeiro",
@@ -20,57 +36,6 @@ const PROJECTS = [
     status: "No Ar",
     statusColor: "#35d68e",
   },
-  {
-    icon: "⬡",
-    color: "#9b6bff",
-    title: "Nome do Projeto",
-    subtitle: "ex: Design System em Nuvem",
-    description:
-      "Descreva a arquitetura de tokens e componentes, quantos componentes foram criados e como o sistema escalou entre produtos ou times.",
-    stats: [
-      { value: "—", label: "Componentes" },
-      { value: "—", label: "Tokens" },
-      { value: "—", label: "Produtos" },
-    ],
-    tags: ["Figma", "Design Tokens", "Componentização"],
-    link: null,
-    status: "Editar",
-    statusColor: "#f5a623",
-  },
-  {
-    icon: "▲",
-    color: "#f5a623",
-    title: "Nome do Projeto",
-    subtitle: "ex: Automação de Marketing com IA",
-    description:
-      "Descreva o fluxo automatizado (captura, CRM, agentes de IA), quais ferramentas integrou e o ganho operacional obtido.",
-    stats: [
-      { value: "—", label: "Fluxos" },
-      { value: "—", label: "Integrações" },
-      { value: "—", label: "Horas/mês" },
-    ],
-    tags: ["n8n", "Webhooks", "Agentes de IA"],
-    link: null,
-    status: "Editar",
-    statusColor: "#f5a623",
-  },
-  {
-    icon: "●",
-    color: "#35d68e",
-    title: "Nome do Projeto",
-    subtitle: "ex: Aplicação Web Responsiva",
-    description:
-      "Descreva a aplicação, o público-alvo, os requisitos de acessibilidade/performance e os resultados de negócio.",
-    stats: [
-      { value: "—", label: "Performance" },
-      { value: "—", label: "Acessibilidade" },
-      { value: "—", label: "Usuários" },
-    ],
-    tags: ["React", "WCAG", "Performance"],
-    link: null,
-    status: "Editar",
-    statusColor: "#f5a623",
-  },
 ];
 
 export default function Projects() {
@@ -84,8 +49,7 @@ export default function Projects() {
           <span className="gradient-text">Estudos de Caso.</span>
         </h2>
         <p className="lede projects-intro">
-          Espaço reservado para os seus cases. Cada card abaixo é um template —
-          substitua pelo nome do projeto, o desafio, a solução e os resultados.
+          Projetos reais que arquitetei e coloquei no ar — do desafio à solução entregue.
         </p>
       </Reveal>
 
