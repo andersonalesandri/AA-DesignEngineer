@@ -20,7 +20,7 @@ const STACK = [
   "HTML5",
   "CSS3",
   "JavaScript",
-  "Design Tokens",
+  "API Integration",
   "Webhooks",
   "n8n",
   "GTM",
