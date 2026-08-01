@@ -155,6 +155,21 @@ ul {
   }
 }
 
+@media (max-width: 720px) {
+  .orbit-system {
+    display: block;
+    position: relative;
+    inset: auto;
+    top: auto;
+    left: auto;
+    right: auto;
+    width: 220px;
+    height: 220px;
+    margin: 0 auto 8px;
+    transform: scale(0.7);
+  }
+}
+
 .orbit-glow {
   position: absolute;
   inset: -80px;
@@ -303,7 +318,7 @@ ul {
 
 @media (max-width: 720px) {
   .section {
-    padding: 88px 20px;
+    padding: 15px 20px 88px;
   }
 }
 
@@ -536,6 +551,12 @@ ul {
 .hero {
   padding-top: 160px;
   padding-bottom: 90px;
+}
+
+@media (max-width: 720px) {
+  .hero {
+    padding-top: 15px;
+  }
 }
 
 .hero-name {
