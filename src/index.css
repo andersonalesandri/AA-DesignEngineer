@@ -23,6 +23,7 @@
 
   --radius: 16px;
   --radius-sm: 10px;
+  --radius-badge: 15px;
   --mono: "JetBrains Mono", "SFMono-Regular", "Consolas", "Liberation Mono", Menlo, monospace;
   --sans: "Inter", "Segoe UI", system-ui, -apple-system, sans-serif;
   --display: "Outfit", "Inter", "Segoe UI", system-ui, sans-serif;
@@ -163,10 +164,10 @@ ul {
     top: 260px;
     left: 50%;
     right: auto;
-    width: 260px;
-    height: 260px;
+    width: 80vw;
+    height: 80vw;
     margin: 0;
-    transform: translate(-50%, -50%) scale(0.7);
+    transform: translate(-50%, -50%) scale(1);
     z-index: -1;
   }
 }
@@ -315,6 +316,7 @@ ul {
   padding: 60px 24px 120px;
   max-width: 1180px;
   margin: 0 auto;
+  scroll-margin-top: 100px;
 }
 
 @media (max-width: 720px) {
@@ -387,7 +389,7 @@ ul {
   align-items: center;
   gap: 6px;
   padding: 8px 10px;
-  border-radius: 999px;
+  border-radius: var(--radius-badge);
   background: rgba(10, 12, 20, 0.75);
   border: 1px solid var(--card-border);
   backdrop-filter: blur(16px);
@@ -424,7 +426,7 @@ ul {
 
 .nav-link {
   padding: 8px 14px;
-  border-radius: 999px;
+  border-radius: var(--radius-badge);
   font-size: 13.5px;
   color: var(--text-dim);
   white-space: nowrap;
@@ -505,7 +507,7 @@ ul {
 
 @media (max-width: 720px) {
   .nav {
-    width: 95%;
+    width: 98%;
     justify-content: space-between;
   }
 
@@ -521,17 +523,24 @@ ul {
     display: flex;
     flex-direction: column;
     gap: 2px;
-    width: 95%;
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 60;
+    width: 98%;
     max-width: none;
     margin-top: 10px;
     padding: 10px;
     border-radius: 18px;
-    background: rgba(10, 12, 20, 0.92);
+    background: rgba(10, 12, 20, 0.96);
     border: 1px solid var(--card-border);
     backdrop-filter: blur(16px);
+    box-shadow: 0 20px 45px -12px rgba(0, 0, 0, 0.6);
     max-height: 0;
     overflow: hidden;
     opacity: 0;
+    pointer-events: none;
     transition: max-height 0.35s ease, opacity 0.3s ease, margin-top 0.35s ease,
       padding 0.35s ease;
   }
@@ -539,11 +548,12 @@ ul {
   .nav-dropdown.is-open {
     max-height: 400px;
     opacity: 1;
+    pointer-events: auto;
   }
 
   .nav-dropdown-link {
     padding: 12px 14px;
-    border-radius: 12px;
+    border-radius: var(--radius-badge);
     font-size: 14.5px;
     color: var(--text-dim);
     transition: color 0.2s, background 0.2s;
@@ -567,7 +577,7 @@ ul {
   align-items: center;
   gap: 8px;
   padding: 13px 22px;
-  border-radius: 12px;
+  border-radius: var(--radius-badge);
   font-size: 14.5px;
   font-weight: 600;
   border: 1px solid transparent;
@@ -600,7 +610,7 @@ ul {
   align-items: center;
   gap: 8px;
   padding: 6px 14px;
-  border-radius: 999px;
+  border-radius: var(--radius-badge);
   border: 1px solid var(--card-border);
   background: rgba(255, 255, 255, 0.03);
   font-family: var(--mono);
@@ -621,7 +631,7 @@ ul {
   display: inline-flex;
   align-items: center;
   padding: 5px 11px;
-  border-radius: 999px;
+  border-radius: var(--radius-badge);
   background: rgba(255, 255, 255, 0.04);
   border: 1px solid var(--card-border);
   font-size: 12px;
@@ -1025,7 +1035,7 @@ ul {
   font-family: var(--mono);
   font-size: 11px;
   padding: 3px 9px;
-  border-radius: 999px;
+  border-radius: var(--radius-badge);
 }
 
 .flow-steps {
@@ -1145,7 +1155,7 @@ ul {
   font-size: 11px;
   letter-spacing: 0.05em;
   padding: 4px 10px;
-  border-radius: 999px;
+  border-radius: var(--radius-badge);
   border: 1px solid;
 }
 
@@ -1277,7 +1287,7 @@ ul {
   font-size: 0.85rem;
   font-weight: 500;
   padding: 11px 20px;
-  border-radius: 999px;
+  border-radius: var(--radius-badge);
   transition: border-color 0.2s, color 0.2s;
 }
 
