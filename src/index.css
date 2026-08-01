@@ -17,13 +17,13 @@
   --orange: #f5a623;
   --pink: #ef5da8;
 
-  --gradient-main: linear-gradient(90deg, var(--blue), var(--purple));
+  --gradient-main: linear-gradient(90deg, var(--blue), var(--purple), var(--pink));
   --gradient-alt: linear-gradient(90deg, var(--cyan), var(--blue), var(--purple));
   --gradient-cool: linear-gradient(90deg, var(--purple), var(--cyan), var(--green));
 
-  --radius: 16px;
+  --radius: 10px;
   --radius-sm: 10px;
-  --radius-badge: 15px;
+  --radius-badge: 10px;
   --mono: "JetBrains Mono", "SFMono-Regular", "Consolas", "Liberation Mono", Menlo, monospace;
   --sans: "Inter", "Segoe UI", system-ui, -apple-system, sans-serif;
   --display: "Outfit", "Inter", "Segoe UI", system-ui, sans-serif;
@@ -506,6 +506,13 @@ ul {
 }
 
 @media (max-width: 720px) {
+  .nav-wrap {
+    position: fixed;
+    top: 12px;
+    left: 0;
+    right: 0;
+  }
+
   .nav {
     width: 98%;
     justify-content: space-between;
@@ -532,7 +539,7 @@ ul {
     max-width: none;
     margin-top: 10px;
     padding: 10px;
-    border-radius: 18px;
+    border-radius: 10px;
     background: rgba(10, 12, 20, 0.96);
     border: 1px solid var(--card-border);
     backdrop-filter: blur(16px);
@@ -700,7 +707,7 @@ ul {
 
 @media (max-width: 720px) {
   .hero {
-    padding-top: 40px;
+    padding-top: 90px;
   }
 }
 
@@ -907,7 +914,7 @@ ul {
 .principle-icon {
   width: 34px;
   height: 34px;
-  border-radius: 9px;
+  border-radius: 10px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -1070,7 +1077,7 @@ ul {
 .flow-index {
   width: 32px;
   height: 32px;
-  border-radius: 9px;
+  border-radius: 10px;
   border: 1px solid var(--card-border);
   display: flex;
   align-items: center;
@@ -1142,7 +1149,7 @@ ul {
 .project-icon {
   width: 34px;
   height: 34px;
-  border-radius: 9px;
+  border-radius: 10px;
   border: 1px solid var(--card-border);
   display: flex;
   align-items: center;
@@ -1481,7 +1488,7 @@ ul {
 .channel-icon {
   width: 36px;
   height: 36px;
-  border-radius: 9px;
+  border-radius: 10px;
   border: 1px solid var(--card-border);
   display: flex;
   align-items: center;
