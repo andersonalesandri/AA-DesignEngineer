@@ -6,13 +6,13 @@ const PROJECTS = [
     icon: "◆",
     color: "#da7756",
     title: "IA na Prática",
-    subtitle: "Imersão ao Vivo de Automação com IA",
+    subtitle: "Imersão ao Vivo via Zoom · Automação com Claude",
     description:
-      "Landing page de uma imersão presencial ao vivo de 2 dias para empreendedores, profissionais de marketing e iniciantes em IA sem experiência técnica. Ensina automação de conteúdo e criação de projetos reais usando Claude e Claude Code, do primeiro prompt ao repositório versionado no GitHub.",
+      "Landing page da imersão onde sou instrutor: 2 dias ao vivo via Zoom para empreendedores e profissionais de marketing sem experiência técnica montarem seu próprio time de agentes de IA. O site em si é a prova do método — construído com Claude Code por 12 agentes de IA especializados (texto, design, estrutura e imagens), coordenados por um agente 'gerente', do primeiro prompt ao deploy.",
     stats: [
-      { value: "2", label: "Dias de Imersão" },
+      { value: "2", label: "Dias ao Vivo" },
       { value: "8", label: "Blocos Práticos" },
-      { value: "14h", label: "Carga Horária" },
+      { value: "12", label: "Agentes de IA" },
     ],
     tags: ["HTML5", "CSS3", "JavaScript", "Claude Code"],
     link: "https://ianapratica-three.vercel.app/",
