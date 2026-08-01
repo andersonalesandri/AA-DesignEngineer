@@ -51,7 +51,7 @@ export default function Hero() {
           </div>
           <div>
             <div className="stat-label">Foco</div>
-            <div className="stat-value">Design Systems</div>
+            <div className="stat-value">AI-Driven UI Architect</div>
           </div>
           <div>
             <div className="stat-label">Stack</div>
