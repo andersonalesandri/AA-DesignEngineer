@@ -1171,6 +1171,15 @@ ul {
   font-weight: 600;
 }
 
+.project-title-link {
+  color: var(--text);
+  transition: color 0.2s ease;
+}
+
+.project-title-link:hover {
+  color: var(--accent, var(--blue));
+}
+
 .project-subtitle {
   color: var(--text-faint);
   font-size: 0.78rem;

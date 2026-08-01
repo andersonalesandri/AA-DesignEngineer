@@ -5,17 +5,20 @@ import Reveal from "./Reveal";
 const PROJECTS = [
   {
     icon: "◆",
-    color: "#4f7bff",
-    title: "Nome do Projeto",
-    subtitle: "ex: Landing Page de Alta Conversão",
+    color: "#C5973E",
+    title: "Christian Vieira — Corretor Imobiliário",
+    subtitle: "Site Institucional de Alta Conversão · Rio de Janeiro",
     description:
-      "Descreva aqui o desafio do cliente, a solução de design/front-end que você entregou e o resultado alcançado (conversão, performance, etc.).",
+      "Christian precisava centralizar vários lançamentos imobiliários em um único site que gerasse autoridade e convertesse visitantes em leads qualificados via WhatsApp. Desenvolvi um hero em vídeo com slideshow por lançamento, depoimentos estilizados como conversas de WhatsApp para reforçar prova social, e um design system próprio em tons dourado e navy.",
     stats: [
-      { value: "—", label: "Métrica 1" },
-      { value: "—", label: "Métrica 2" },
-      { value: "—", label: "Métrica 3" },
+      { value: "5", label: "Lançamentos" },
+      { value: "4", label: "Etapas do Método" },
+      { value: "100%", label: "Responsivo" },
     ],
-    tags: ["HTML5", "CSS3", "JavaScript"],
+    tags: ["HTML5", "CSS3", "Tailwind CSS", "JavaScript"],
+    link: "https://corretordeimovelrj.com.br/",
+    status: "No Ar",
+    statusColor: "#35d68e",
   },
   {
     icon: "⬡",
@@ -30,6 +33,9 @@ const PROJECTS = [
       { value: "—", label: "Produtos" },
     ],
     tags: ["Figma", "Design Tokens", "Componentização"],
+    link: null,
+    status: "Editar",
+    statusColor: "#f5a623",
   },
   {
     icon: "▲",
@@ -44,6 +50,9 @@ const PROJECTS = [
       { value: "—", label: "Horas/mês" },
     ],
     tags: ["n8n", "Webhooks", "Agentes de IA"],
+    link: null,
+    status: "Editar",
+    statusColor: "#f5a623",
   },
   {
     icon: "●",
@@ -58,6 +67,9 @@ const PROJECTS = [
       { value: "—", label: "Usuários" },
     ],
     tags: ["React", "WCAG", "Performance"],
+    link: null,
+    status: "Editar",
+    statusColor: "#f5a623",
   },
 ];
 
@@ -81,7 +93,7 @@ export default function Projects() {
         {PROJECTS.map((project, i) => (
           <Reveal key={i} delay={(i % 2) * 90} className="project-card-reveal">
             <div
-              className="card card-placeholder project-card"
+              className={`card project-card ${project.link ? "" : "card-placeholder"}`}
               style={
                 {
                   "--accent": project.color,
@@ -98,13 +110,25 @@ export default function Projects() {
                 </div>
                 <span
                   className="project-status"
-                  style={{ color: "#f5a623", borderColor: "#f5a62366", background: "#f5a6231a" }}
+                  style={{
+                    color: project.statusColor,
+                    borderColor: `${project.statusColor}66`,
+                    background: `${project.statusColor}1a`,
+                  }}
                 >
-                  Editar
+                  {project.status}
                 </span>
               </div>
 
-              <div className="project-title">{project.title}</div>
+              <div className="project-title">
+                {project.link ? (
+                  <a href={project.link} target="_blank" rel="noreferrer" className="project-title-link">
+                    {project.title} ↗
+                  </a>
+                ) : (
+                  project.title
+                )}
+              </div>
               <div className="project-subtitle">{project.subtitle}</div>
               <p className="project-desc">{project.description}</p>
 
