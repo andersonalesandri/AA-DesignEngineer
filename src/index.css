@@ -380,7 +380,7 @@ ul {
   z-index: 50;
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: flex-start;
   padding: 0 16px;
 }
 
@@ -511,6 +511,7 @@ ul {
     top: 12px;
     left: 0;
     right: 0;
+    align-items: center;
   }
 
   .nav {
