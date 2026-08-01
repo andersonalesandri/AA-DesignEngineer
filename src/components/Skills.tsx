@@ -34,7 +34,7 @@ const DETAIL = [
     group: "Automação & Cloud",
     color: "#35d68e",
     items: [
-      { name: "IA First (Metodologia)", pct: 93 },
+      { name: "IA First (Metodologia)", pct: 93, trending: true },
       { name: "Orquestração de Agentes de IA", pct: 87 },
       { name: "n8n", pct: 89 },
       { name: "Webhooks & Integrações", pct: 85 },
@@ -85,20 +85,26 @@ function SkillGroupCard({ group }: { group: (typeof DETAIL)[number] }) {
         <span className="skills-detail-dot" style={{ background: group.color }} />
         {group.group}
       </div>
-      {group.items.map((item) => (
-        <div key={item.name} className="skill-item">
-          <div className="skill-item-top">
-            <span>{item.name}</span>
-            <span style={{ color: group.color, fontWeight: 700 }}>{item.pct}%</span>
+      {group.items.map((item) => {
+        const isTrending = "trending" in item && item.trending;
+        return (
+          <div key={item.name} className="skill-item">
+            <div className="skill-item-top">
+              <span className={isTrending ? "skill-item-trending" : ""}>
+                {item.name}
+                {isTrending && <span className="trending-badge">🔥 Em alta</span>}
+              </span>
+              <span style={{ color: group.color, fontWeight: 700 }}>{item.pct}%</span>
+            </div>
+            <div className="skill-bar">
+              <div
+                className="skill-bar-fill"
+                style={{ width: inView ? `${item.pct}%` : "0%", background: group.color }}
+              />
+            </div>
           </div>
-          <div className="skill-bar">
-            <div
-              className="skill-bar-fill"
-              style={{ width: inView ? `${item.pct}%` : "0%", background: group.color }}
-            />
-          </div>
-        </div>
-      ))}
+        );
+      })}
     </div>
   );
 }
