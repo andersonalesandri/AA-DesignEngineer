@@ -17,7 +17,7 @@
   --orange: #f5a623;
   --pink: #ef5da8;
 
-  --gradient-main: linear-gradient(90deg, var(--blue), var(--purple), var(--pink));
+  --gradient-main: linear-gradient(90deg, var(--blue), var(--purple));
   --gradient-alt: linear-gradient(90deg, var(--cyan), var(--blue), var(--purple));
   --gradient-cool: linear-gradient(90deg, var(--purple), var(--cyan), var(--green));
 

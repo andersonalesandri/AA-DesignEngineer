@@ -102,7 +102,7 @@ export default function About() {
                 <div className="timeline-desc">
                   {item.bullets.map((b) => (
                     <div key={b} style={{ marginBottom: 8 }}>
-                      <span style={{ color: "#ef5da8" }}>·</span> {b}
+                      · {b}
                     </div>
                   ))}
                 </div>
