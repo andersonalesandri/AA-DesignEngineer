@@ -11,6 +11,7 @@ const LINKS = [
 
 export default function Nav() {
   const [active, setActive] = useState("home");
+  const [menuOpen, setMenuOpen] = useState(false);
 
   useEffect(() => {
     const sections = [...LINKS.map((l) => l.id), "contact"]
@@ -37,22 +38,60 @@ export default function Nav() {
       <nav className="nav">
         <a href="#home" className="nav-logo">
           <span className="nav-dot" />
-          AA
+          AA – Design Engineer
         </a>
         <span className="nav-sep" />
+
+        <div className="nav-links">
+          {LINKS.map((link) => (
+            <a
+              key={link.id}
+              href={`#${link.id}`}
+              className={`nav-link ${active === link.id ? "active" : ""}`}
+            >
+              {link.label}
+            </a>
+          ))}
+          <a href="#contact" className="nav-link nav-cta">
+            Contato
+          </a>
+        </div>
+
+        <button
+          type="button"
+          className="nav-menu-toggle"
+          onClick={() => setMenuOpen((v) => !v)}
+          aria-expanded={menuOpen}
+          aria-label="Abrir menu"
+        >
+          <span className="nav-menu-label">MENU</span>
+          <span className={`nav-burger ${menuOpen ? "is-open" : ""}`}>
+            <span />
+            <span />
+            <span />
+          </span>
+        </button>
+      </nav>
+
+      <div className={`nav-dropdown ${menuOpen ? "is-open" : ""}`}>
         {LINKS.map((link) => (
           <a
             key={link.id}
             href={`#${link.id}`}
-            className={`nav-link ${active === link.id ? "active" : ""}`}
+            className={`nav-dropdown-link ${active === link.id ? "active" : ""}`}
+            onClick={() => setMenuOpen(false)}
           >
             {link.label}
           </a>
         ))}
-        <a href="#contact" className="nav-link nav-cta">
+        <a
+          href="#contact"
+          className="nav-dropdown-link nav-dropdown-cta"
+          onClick={() => setMenuOpen(false)}
+        >
           Contato
         </a>
-      </nav>
+      </div>
     </div>
   );
 }

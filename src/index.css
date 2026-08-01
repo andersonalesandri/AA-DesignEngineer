@@ -377,7 +377,8 @@ ul {
   top: 18px;
   z-index: 50;
   display: flex;
-  justify-content: center;
+  flex-direction: column;
+  align-items: center;
   padding: 0 16px;
 }
 
@@ -444,6 +445,114 @@ ul {
 .nav-cta {
   color: var(--blue) !important;
   font-weight: 600;
+}
+
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.nav-menu-toggle {
+  display: none;
+  align-items: center;
+  gap: 10px;
+  background: none;
+  border: none;
+  color: var(--text-dim);
+  padding: 8px 12px 8px 14px;
+}
+
+.nav-menu-label {
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 0.15em;
+  color: var(--text-faint);
+}
+
+.nav-burger {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 4px;
+  width: 20px;
+}
+
+.nav-burger span {
+  display: block;
+  height: 2px;
+  width: 100%;
+  background: var(--text-dim);
+  border-radius: 2px;
+  transition: transform 0.3s ease, opacity 0.2s ease;
+}
+
+.nav-burger.is-open span:nth-child(1) {
+  transform: translateY(6px) rotate(45deg);
+}
+
+.nav-burger.is-open span:nth-child(2) {
+  opacity: 0;
+}
+
+.nav-burger.is-open span:nth-child(3) {
+  transform: translateY(-6px) rotate(-45deg);
+}
+
+.nav-dropdown {
+  display: none;
+}
+
+@media (max-width: 720px) {
+  .nav-links {
+    display: none;
+  }
+
+  .nav-menu-toggle {
+    display: flex;
+  }
+
+  .nav-dropdown {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    width: 100%;
+    max-width: 360px;
+    margin-top: 10px;
+    padding: 10px;
+    border-radius: 18px;
+    background: rgba(10, 12, 20, 0.92);
+    border: 1px solid var(--card-border);
+    backdrop-filter: blur(16px);
+    max-height: 0;
+    overflow: hidden;
+    opacity: 0;
+    transition: max-height 0.35s ease, opacity 0.3s ease, margin-top 0.35s ease,
+      padding 0.35s ease;
+  }
+
+  .nav-dropdown.is-open {
+    max-height: 400px;
+    opacity: 1;
+  }
+
+  .nav-dropdown-link {
+    padding: 12px 14px;
+    border-radius: 12px;
+    font-size: 14.5px;
+    color: var(--text-dim);
+    transition: color 0.2s, background 0.2s;
+  }
+
+  .nav-dropdown-link.active {
+    color: var(--text);
+    background: rgba(79, 123, 255, 0.14);
+  }
+
+  .nav-dropdown-cta {
+    color: var(--blue) !important;
+    font-weight: 600;
+  }
 }
 
 /* Buttons */
@@ -576,7 +685,7 @@ ul {
 
 @media (max-width: 720px) {
   .hero {
-    padding-top: 15px;
+    padding-top: 40px;
   }
 }
 
