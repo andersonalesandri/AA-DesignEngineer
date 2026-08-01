@@ -2,18 +2,23 @@ import { useEffect, useState } from "react";
 import Reveal from "./Reveal";
 
 const TOOLS = [
-  { name: "Figma", level: "Avançado", color: "#4f7bff" },
+  { name: "Claude Code", level: "Avançado", color: "#da7756" },
   { name: "Photoshop / Illustrator", level: "Avançado", color: "#9b6bff" },
   { name: "WordPress / Elementor", level: "Avançado", color: "#35d68e" },
-  { name: "n8n / Make", level: "Proficiente", color: "#f5a623" },
+  { name: "n8n", level: "Proficiente", color: "#f5a623" },
 ];
 
 const FLOW = [
-  { title: "Design & Prototipação", desc: "Figma, alta fidelidade" },
-  { title: "Design Tokens", desc: "Tokens em JSON/CSS, base do sistema" },
-  { title: "Componentização", desc: "Arquitetura de componentes web" },
-  { title: "Automação com IA", desc: "Agentes de IA orquestrados em nuvem" },
-  { title: "Deploy & Analytics", desc: "Performance, SEO técnico, GTM/GA4" },
+  { title: "Design & Prototipação", desc: "Wireframes e UI de alta fidelidade" },
+  {
+    title: "Engenharia com Claude Code",
+    desc: "PRD, Claude.md, Design System e Progressive Disclosure",
+  },
+  { title: "Automação com IA", desc: "Agentes orquestrados em nuvem" },
+  {
+    title: "Deploy & Analytics",
+    desc: "Performance, SEO técnico, Google Ads, GTM/GA4 e Meta Ads",
+  },
 ];
 
 const STACK = [

@@ -1,3 +1,4 @@
+import { useState } from "react";
 import Reveal from "./Reveal";
 import { useInView } from "../hooks/useInView";
 
@@ -34,7 +35,7 @@ const DETAIL = [
     color: "#35d68e",
     items: [
       { name: "Orquestração de Agentes de IA", pct: 87 },
-      { name: "n8n / Make", pct: 89 },
+      { name: "n8n", pct: 89 },
       { name: "Webhooks & Integrações", pct: 85 },
       { name: "Prompt / Context Engineering", pct: 88 },
     ],
@@ -102,6 +103,8 @@ function SkillGroupCard({ group }: { group: (typeof DETAIL)[number] }) {
 }
 
 export default function Skills() {
+  const [expanded, setExpanded] = useState(false);
+
   return (
     <section id="skills" className="section">
       <Reveal>
@@ -121,12 +124,28 @@ export default function Skills() {
         <MatrixOverview />
       </Reveal>
 
-      <div className="skills-detail-grid">
-        {DETAIL.map((group, i) => (
-          <Reveal key={group.group} delay={(i % 2) * 90}>
-            <SkillGroupCard group={group} />
-          </Reveal>
-        ))}
+      <div className="skills-toggle-row">
+        <button
+          type="button"
+          className="skills-toggle-btn"
+          onClick={() => setExpanded((v) => !v)}
+          aria-expanded={expanded}
+        >
+          {expanded ? "Ocultar detalhamento" : "Ver detalhamento completo"}
+          <span className={`skills-toggle-chevron ${expanded ? "is-open" : ""}`}>▾</span>
+        </button>
+      </div>
+
+      <div className={`skills-expand-wrap ${expanded ? "is-expanded" : ""}`}>
+        <div className="skills-expand-inner">
+          <div className="skills-detail-grid">
+            {DETAIL.map((group, i) => (
+              <Reveal key={group.group} delay={(i % 2) * 90}>
+                <SkillGroupCard group={group} />
+              </Reveal>
+            ))}
+          </div>
+        </div>
       </div>
     </section>
   );
