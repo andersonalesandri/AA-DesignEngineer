@@ -89,6 +89,7 @@ export default function Contact() {
         </Reveal>
 
         <Reveal delay={90}>
+        <div className="channels-label">Qual o seu projeto? Fale comigo.</div>
         <form className="card" onSubmit={handleSubmit}>
           <div className="form-row">
             <div>
