@@ -158,6 +158,21 @@ export default function ProcessBoard() {
     };
   }, []);
 
+  // cursor-follow gradient glow on each card
+  useEffect(() => {
+    const track = trackRef.current;
+    if (!track) return;
+    const onMove = (e: MouseEvent) => {
+      const card = (e.target as HTMLElement)?.closest<HTMLElement>(".pcard");
+      if (!card) return;
+      const r = card.getBoundingClientRect();
+      card.style.setProperty("--mx", `${e.clientX - r.left}px`);
+      card.style.setProperty("--my", `${e.clientY - r.top}px`);
+    };
+    track.addEventListener("mousemove", onMove);
+    return () => track.removeEventListener("mousemove", onMove);
+  }, []);
+
   const intro = clamp(p / INTRO);
   const scrub = clamp((p - INTRO) / (1 - INTRO));
   const current = Math.min(PHASES.length, Math.floor(scrub * PHASES.length) + 1);

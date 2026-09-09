@@ -128,6 +128,21 @@ export default function About() {
     };
   }, []);
 
+  // cursor-follow gradient glow on each card
+  useEffect(() => {
+    const track = trackRef.current;
+    if (!track) return;
+    const onMove = (e: MouseEvent) => {
+      const card = (e.target as HTMLElement)?.closest<HTMLElement>(".apanel");
+      if (!card) return;
+      const r = card.getBoundingClientRect();
+      card.style.setProperty("--mx", `${e.clientX - r.left}px`);
+      card.style.setProperty("--my", `${e.clientY - r.top}px`);
+    };
+    track.addEventListener("mousemove", onMove);
+    return () => track.removeEventListener("mousemove", onMove);
+  }, []);
+
   const scrub = clamp((p - INTRO) / (1 - INTRO));
   const current = Math.min(PRINCIPLES.length, Math.floor(scrub * PRINCIPLES.length) + 1);
 

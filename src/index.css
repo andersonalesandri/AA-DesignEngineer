@@ -1477,6 +1477,40 @@ ul, ol {
     0 0 40px -16px color-mix(in srgb, var(--accent) 24%, transparent);
 }
 
+/* cursor-follow gradient glow — shared by the horizontal-scroll cards */
+.pcard::before,
+.apanel::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: var(--radius);
+  background: radial-gradient(
+    230px circle at var(--mx, 50%) var(--my, 50%),
+    color-mix(in srgb, var(--accent) 20%, transparent),
+    transparent 62%
+  );
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.pcard:hover::before,
+.apanel:hover::before {
+  opacity: 1;
+}
+
+.pcard > *:not(.pcard-marker),
+.apanel > *:not(.apanel-marker) {
+  position: relative;
+  z-index: 1;
+}
+
+.pcard-marker,
+.apanel-marker {
+  z-index: 2;
+}
+
 /* journey marker — the phase glyph, centred above its card on the rail */
 .pcard-marker {
   position: absolute;
