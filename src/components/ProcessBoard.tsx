@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState, type CSSProperties, type ReactNode } from "react";
+import { RETICLE } from "./About";
 
 const clamp = (n: number, a = 0, b = 1) => Math.min(b, Math.max(a, n));
 
@@ -206,7 +207,8 @@ export default function ProcessBoard() {
               style={{ ...cardStyle(i), ["--i" as string]: i }}
             >
               <span className="pcard-marker" aria-hidden="true">
-                {GLYPHS[ph.icon]}
+                <span className="mk-def">{GLYPHS[ph.icon]}</span>
+                <span className="mk-hov">{RETICLE}</span>
               </span>
               <span className="pcard-n">{ph.n}</span>
               <div className="pcard-namerow">
