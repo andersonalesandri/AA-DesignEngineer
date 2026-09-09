@@ -40,11 +40,11 @@ const LAB_ITEMS: LabItem[] = [
     since: "desde 2021",
     title: "Front-End & Arquitetura de Componentes Web",
     desc:
-      "Composição de componentes, design tokens, tipagem e acessibilidade na prática — construir bibliotecas que o time inteiro usa sem quebrar, com CSS moderno (grid, container queries, cascade layers), React e TypeScript. Foco em API de componente previsível, estados acessíveis e performance de renderização.",
+      "Composição de componentes, design tokens, tipagem e acessibilidade na prática — construir bibliotecas que o time inteiro usa sem quebrar, com CSS moderno (grid, container queries, cascade layers), React e TypeScript. Fundamentos consolidados na Rocketseat, de Diego Fernandes e Mayk Brito.",
     refs: [
+      { label: "Rocketseat — Diego Fernandes & Mayk Brito", url: "https://www.rocketseat.com.br/" },
       { label: "MDN Web Docs", url: "https://developer.mozilla.org/" },
       { label: "web.dev — Google", url: "https://web.dev/" },
-      { label: "“Every Layout” — Heydon Pickering & Andy Bell" },
       { label: "“Refactoring UI” — Adam Wathan & Steve Schoger" },
     ],
     tags: ["Design tokens", "Componentização", "CSS moderno", "Acessibilidade (WCAG)"],
@@ -54,8 +54,9 @@ const LAB_ITEMS: LabItem[] = [
     since: "desde 2024",
     title: "Cloud & Automação com Agentes de IA",
     desc:
-      "Orquestração de agentes de IA em produção: engenharia de contexto e de prompt, definição de ferramentas e limites, avaliação de saídas e integração com fluxos reais via n8n, webhooks e filas — com deploy, observabilidade e custo sob controle.",
+      "Orquestração de agentes de IA em produção: engenharia de contexto e de prompt, definição de ferramentas e limites, avaliação de saídas e integração com fluxos reais via n8n, webhooks e filas — com deploy, observabilidade e custo sob controle. Formação com Alan Nicolas, na Academia Lendária.",
     refs: [
+      { label: "Alan Nicolas — Academia Lendária", url: "https://www.academialendaria.ai/" },
       {
         label: "Anthropic — Building effective agents",
         url: "https://www.anthropic.com/research/building-effective-agents",
