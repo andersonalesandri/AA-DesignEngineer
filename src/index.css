@@ -1709,9 +1709,29 @@ ul, ol {
   display: flex;
   flex-direction: column;
   padding: 30px;
-  border: 1px solid var(--line);
   border-radius: var(--radius);
-  background: var(--paper-raise);
+  /* solid orange — sets the About rail apart from the charcoal process rail */
+  background: #ee5f22;
+  color: #1c1a17;
+}
+
+.apanel .apanel-title,
+.apanel .apanel-year-tag {
+  color: #1c1a17;
+}
+.apanel .apanel-desc,
+.apanel .apanel-bullets li {
+  color: rgba(28, 26, 23, 0.82);
+}
+.apanel .apanel-org {
+  color: rgba(28, 26, 23, 0.62);
+}
+.apanel .apanel-glyph {
+  border-color: rgba(28, 26, 23, 0.35);
+  color: #1c1a17;
+}
+.apanel .apanel-bullets li::before {
+  background: #1c1a17;
 }
 
 .apanel-glyph {
