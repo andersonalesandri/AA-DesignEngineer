@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 
-const EMAIL = "anderson_alessandri@hotmail.com";
+const WHATSAPP_URL = "https://wa.me/5521997836113";
 
 const CAPS = [
   "Todo projeto começa numa mesa vazia.",
@@ -128,8 +128,13 @@ export default function Opening() {
             <a href="#projects" className="btn btn-primary">
               Ver o processo
             </a>
-            <a href={`mailto:${EMAIL}`} className="btn btn-link">
-              {EMAIL}
+            <a
+              href={WHATSAPP_URL}
+              target="_blank"
+              rel="noreferrer"
+              className="btn btn-link"
+            >
+              Falar no WhatsApp
             </a>
           </div>
         </div>
