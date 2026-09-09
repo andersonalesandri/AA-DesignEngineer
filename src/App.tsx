@@ -16,22 +16,26 @@ export default function App() {
         <InterfaceReveal />
         <div className="section-divider section-divider--dotted" />
         <ProcessBoard />
-        <div className="tone-dark">
+        <div className="tone-dark tone-tint">
           <Projects />
         </div>
         <About />
         <div className="tone-dark">
           <Laboratory />
         </div>
-        <Contact />
+        <div className="tone-dark tone-deep">
+          <Contact />
+        </div>
       </main>
 
-      <footer className="footer">
-        <div className="footer-name">
-          Anderson Alessandri — Designer de Interface &amp; Design Engineer
-        </div>
-        <div className="footer-sub">Rio de Janeiro · 2026</div>
-      </footer>
+      <div className="tone-dark tone-deep">
+        <footer className="footer">
+          <div className="footer-name">
+            Anderson Alessandri — Designer de Interface &amp; Design Engineer
+          </div>
+          <div className="footer-sub">Rio de Janeiro · 2026</div>
+        </footer>
+      </div>
     </div>
   );
 }

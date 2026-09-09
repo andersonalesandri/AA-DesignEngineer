@@ -43,22 +43,39 @@
   --maxw: 1060px;
 }
 
-/* dark-toned band — remaps the palette tokens for the sections inside it */
+/* dark-toned band — remaps the palette tokens for the sections inside it.
+   Warm, accent-derived. The page steps down through these toward the footer. */
 .tone-dark {
-  --paper: #221f1a;
-  --paper-raise: #2b2721;
+  --paper: #2a211c;
+  --paper-raise: #342a24;
   --ink: #f2eee4;
-  --ink-soft: #c6bfb0;
-  --ink-mute: #8d8676;
-  --line: #39342c;
-  --line-strong: #4d473c;
-  --accent: #d3794f;
-  --accent-soft: #e0966f;
+  --ink-soft: #c8c1b2;
+  --ink-mute: #948c7c;
+  --line: #3f362d;
+  --line-strong: #544a3d;
+  --accent: #d8825a;
+  --accent-soft: #e59d76;
   --sage: #7d9475;
   --card-border: var(--line);
   --card-border-hover: var(--line-strong);
   background: var(--paper);
   color: var(--ink);
+}
+
+/* warmer step — close to the bullet/accent colour */
+.tone-dark.tone-tint {
+  --paper: #3d2119;
+  --paper-raise: #48281e;
+  --line: #56342a;
+  --line-strong: #6b4437;
+}
+
+/* darkest step — the close of the page + footer */
+.tone-dark.tone-deep {
+  --paper: #1b1512;
+  --paper-raise: #241c17;
+  --line: #322a24;
+  --line-strong: #443a31;
 }
 
 * {
