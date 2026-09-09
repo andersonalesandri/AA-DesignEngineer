@@ -11,15 +11,6 @@ const S = {
   strokeLinejoin: "round" as const,
 };
 
-/* icon shown while hovering any rail card — orange reticle */
-export const RETICLE = (
-  <svg viewBox="0 0 24 24" {...S}>
-    <circle cx="12" cy="12" r="7" />
-    <path d="M12 2v3.5M12 18.5V22M2 12h3.5M18.5 12H22" />
-    <circle cx="12" cy="12" r="1.5" fill="currentColor" />
-  </svg>
-);
-
 type Principle = { glyph: ReactNode; title: string; desc: string };
 
 const PRINCIPLES: Principle[] = [
@@ -179,8 +170,7 @@ export default function About() {
                 style={{ ["--i" as string]: i }}
               >
                 <span className="apanel-marker" aria-hidden="true">
-                  <span className="mk-def">{panel.glyph}</span>
-                  <span className="mk-hov">{RETICLE}</span>
+                  {panel.glyph}
                 </span>
                 <div className="apanel-namerow">
                   <span className="apanel-blip" aria-hidden="true" />
