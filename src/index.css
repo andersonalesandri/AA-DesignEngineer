@@ -1609,15 +1609,14 @@ ul, ol {
   line-height: 1.42;
 }
 
-/* English title, under the PT phase name */
+/* English title, beside the PT phase name — light italic */
 .pcard-name .t-en {
-  display: block;
-  margin-top: 2px;
-  font-family: var(--sans);
-  font-style: normal;
-  font-weight: 400;
+  margin-left: 9px;
+  font-family: var(--display);
+  font-style: italic;
+  font-weight: 300;
   font-size: 0.72em;
-  letter-spacing: 0.02em;
+  letter-spacing: 0.01em;
   color: var(--ink-mute);
 }
 
