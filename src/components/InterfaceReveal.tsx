@@ -163,16 +163,19 @@ export default function InterfaceReveal() {
   const draw = clamp(p * 2.6);
   const lineIdx = p < 0.42 ? 0 : p < 0.76 ? 1 : 2;
 
+  // staggered parallax: each phone enters from further down, at its own rate
   const phoneStyle = (i: number) => {
-    const ci = clamp((p - 0.3 - i * 0.08) / 0.28);
+    const ci = clamp((p - 0.22 - i * 0.1) / 0.32);
     const inv = 1 - ci;
+    const depth = [56, 96, 40][i] ?? 56;
     return {
       "--scr-op": ci,
-      "--scr-blur": `${(inv * 4).toFixed(2)}px`,
-      transform: `translateY(${(inv * 26).toFixed(1)}px) rotate(calc(var(--rot, 0deg) * ${1 + i * 0.15}))`,
+      "--scr-blur": `${(inv * 5).toFixed(2)}px`,
+      transform: `translateY(${(inv * depth).toFixed(1)}px) rotate(calc(var(--rot, 0deg) * ${1 + i * 0.2}))`,
     } as React.CSSProperties;
   };
   const wireOpacity = clamp(1.15 - p * 2.1);
+  const bgShift = { transform: `translateY(${(p * -40).toFixed(1)}px) scale(1.06)` } as React.CSSProperties;
 
   return (
     <section
@@ -182,7 +185,7 @@ export default function InterfaceReveal() {
       style={{ ["--p" as string]: p }}
     >
       <div className="ireveal-stage">
-        <div className="ireveal-bg" aria-hidden="true">
+        <div className="ireveal-bg" aria-hidden="true" style={bgShift}>
           <video autoPlay muted loop playsInline preload="none" poster="/media/hero-texture.jpg">
             <source src="/media/hero-texture.webm" type="video/webm" />
             <source src="/media/hero-texture.mp4" type="video/mp4" />
