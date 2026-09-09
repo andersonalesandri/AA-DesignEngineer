@@ -125,7 +125,7 @@ export default function Opening() {
             decisão pelo caminho.
           </p>
           <div className="hero-actions">
-            <a href="#projects" className="btn btn-primary">
+            <a href="#processo" className="btn btn-primary">
               Ver o processo
             </a>
             <a
