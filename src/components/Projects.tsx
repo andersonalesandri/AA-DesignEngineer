@@ -95,7 +95,8 @@ export default function Projects() {
       <Reveal>
         <span className="eyebrow">Projetos</span>
         <h2 className="heading-xl">
-          A jornada, <span className="gradient-text">não só a tela final</span>.
+          <span className="kw">A jornada</span>,{" "}
+          <span className="gradient-text">não só a tela final</span>.
         </h2>
         <p className="lede projects-intro">
           Cada projeto contado do começo: o problema, o que a pesquisa mostrou, as
