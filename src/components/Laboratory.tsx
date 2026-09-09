@@ -18,13 +18,15 @@ const LAB_ITEMS: LabItem[] = [
     since: "desde 2022",
     title: "Aprofundamento em UX/UI Design & Arquitetura de Informação",
     desc:
-      "Estudo sistemático de pesquisa com usuários, heurísticas de usabilidade e arquitetura de informação: como as pessoas constroem modelos mentais, como nomear, agrupar e hierarquizar conteúdo para que encontrem o que procuram, e como sustentar cada decisão com teste de usabilidade em vez de opinião. Base no NN/g e nos clássicos do campo.",
+      "Estudo sistemático de pesquisa com usuários, heurísticas de usabilidade e arquitetura de informação: como as pessoas constroem modelos mentais, como nomear, agrupar e hierarquizar conteúdo para que encontrem o que procuram, e como sustentar cada decisão com teste de usabilidade em vez de opinião. Base no NN/g, nos clássicos do campo e na formação com Leandro Rezende (UX Unicórnio) e Kácio Felipe (Academy Skills).",
     quote: {
       text: "O bom design é, na verdade, muito mais difícil de perceber do que o design ruim — quando funciona, ele some da nossa frente.",
       author: "Don Norman",
       source: "O Design do Dia a Dia",
     },
     refs: [
+      { label: "Leandro Rezende — UX Unicórnio" },
+      { label: "Kácio Felipe — Academy Skills" },
       { label: "Nielsen Norman Group", url: "https://www.nngroup.com/" },
       {
         label: "As 10 Heurísticas de Usabilidade de Jakob Nielsen",
