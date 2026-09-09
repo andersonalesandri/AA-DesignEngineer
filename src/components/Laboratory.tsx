@@ -64,7 +64,7 @@ export default function Laboratory() {
   return (
     <section id="lab" className="section">
       <Reveal>
-        <span className="eyebrow">// LAB.APRENDIZADO_CONTÍNUO</span>
+        <span className="eyebrow">Em estudo</span>
         <h2 className="heading-xl">
           Sempre explorando.
           <br />

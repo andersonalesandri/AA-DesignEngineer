@@ -57,7 +57,7 @@ export default function About() {
   return (
     <section id="identity" className="section">
       <Reveal>
-        <span className="eyebrow">// IDENTITY.PROFILE</span>
+        <span className="eyebrow">Quem faz</span>
         <h2 className="heading-xl">
           A Engenharia
           <br />
@@ -75,12 +75,7 @@ export default function About() {
           {PRINCIPLES.map((p, i) => (
             <Reveal key={p.title} delay={i * 90}>
               <div className="card">
-                <div
-                  className="principle-icon"
-                  style={{ color: p.color, background: `${p.color}1a`, border: `1px solid ${p.color}40` }}
-                >
-                  {p.icon}
-                </div>
+                <div className="principle-icon">{p.icon}</div>
                 <div className="principle-title">{p.title}</div>
                 <div className="principle-desc">{p.desc}</div>
               </div>
@@ -93,10 +88,8 @@ export default function About() {
           <div className="timeline">
             {TIMELINE.map((item) => (
               <div key={item.year} className="timeline-item">
-                <span className="timeline-dot" style={{ background: item.color, boxShadow: `0 0 8px ${item.color}` }} />
-                <div className="timeline-year" style={{ color: item.color }}>
-                  {item.year}
-                </div>
+                <span className="timeline-dot" />
+                <div className="timeline-year">{item.year}</div>
                 <div className="timeline-role">{item.role}</div>
                 <div className="timeline-org">{item.org}</div>
                 <div className="timeline-desc">

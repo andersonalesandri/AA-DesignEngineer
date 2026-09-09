@@ -51,7 +51,7 @@ export default function CommandCenter() {
   return (
     <section id="workflow" className="section">
       <Reveal>
-        <span className="eyebrow">// WORKFLOW.TOOLKIT</span>
+        <span className="eyebrow">Como eu trabalho</span>
         <h2 className="heading-xl">
           Do Design ao Deploy,
           <br />
@@ -71,12 +71,7 @@ export default function CommandCenter() {
             {TOOLS.map((t) => (
               <div key={t.name} className="tool-row">
                 <span className="tool-name">{t.name}</span>
-                <span
-                  className="tool-level"
-                  style={{ color: t.color, background: `${t.color}1a`, border: `1px solid ${t.color}40` }}
-                >
-                  {t.level}
-                </span>
+                <span className="tool-level">{t.level}</span>
               </div>
             ))}
           </div>

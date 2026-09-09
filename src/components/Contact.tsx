@@ -20,7 +20,7 @@ export default function Contact() {
   return (
     <section id="contact" className="section">
       <Reveal>
-        <span className="eyebrow">// CONTACT.CHANNELS</span>
+        <span className="eyebrow">Contato</span>
         <h2 className="heading-xl">
           Vamos construir algo
           <br />
