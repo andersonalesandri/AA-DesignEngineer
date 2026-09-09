@@ -1457,9 +1457,8 @@ ul, ol {
 .pcard:hover {
   border-color: var(--accent);
   box-shadow:
-    0 0 0 1px var(--accent),
-    0 8px 44px -4px color-mix(in srgb, var(--accent) 70%, transparent),
-    0 0 70px -10px color-mix(in srgb, var(--accent) 55%, transparent);
+    0 6px 26px -10px color-mix(in srgb, var(--accent) 32%, transparent),
+    0 0 40px -16px color-mix(in srgb, var(--accent) 24%, transparent);
 }
 
 /* journey marker — the phase glyph, centred above its card on the rail */
