@@ -114,8 +114,8 @@ const PHASES: Phase[] = [
   {
     n: "05",
     icon: "prototype",
-    name: "Protótipo & teste",
-    nameEn: "Prototype & test",
+    name: "Protótipo",
+    nameEn: "Prototype",
     line: "Dou fidelidade e testo com gente de verdade — e itero.",
     lineEn: "I raise fidelity, test with real people — and iterate.",
     does: ["UI de alta fidelidade", "Design system e tokens", "Protótipo interativo", "Teste de usabilidade"],
