@@ -1,5 +1,6 @@
 import Nav from "./components/Nav";
 import Opening from "./components/Opening";
+import InterfaceReveal from "./components/InterfaceReveal";
 import About from "./components/About";
 import CommandCenter from "./components/CommandCenter";
 import Projects from "./components/Projects";
@@ -13,6 +14,7 @@ export default function App() {
       <Nav />
       <main>
         <Opening />
+        <InterfaceReveal />
         <div className="section-divider" />
         <About />
         <div className="section-divider" />

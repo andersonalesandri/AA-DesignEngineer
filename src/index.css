@@ -637,6 +637,189 @@ ul, ol {
 }
 
 /* ------------------------------------------------------------------ */
+/* Interface reveal — pays off "só então a interface aparece"         */
+/* ------------------------------------------------------------------ */
+
+.ireveal {
+  position: relative;
+  height: 260vh;
+}
+
+.ireveal-stage {
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 24px;
+  overflow: hidden;
+  background: var(--paper);
+}
+
+.ireveal-eyebrow {
+  position: absolute;
+  top: 12vh;
+  left: 50%;
+  transform: translateX(-50%);
+  margin: 0;
+}
+
+.ireveal-frame {
+  position: relative;
+  width: min(560px, 84vw);
+  aspect-ratio: 420 / 300;
+}
+
+.ireveal-wire {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  opacity: calc(1.15 - var(--p, 0) * 1.95);
+}
+
+.ireveal-card {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  padding: 26px;
+  border: 1px solid var(--line-strong);
+  border-radius: var(--radius);
+  background: var(--paper);
+  opacity: calc((var(--p, 0) - 0.32) * 2.6);
+  filter: blur(calc((1 - var(--p, 0)) * 3px));
+  transform: perspective(1000px) rotateX(var(--tilt-x, 0deg))
+    rotateY(var(--tilt-y, 0deg)) rotate(calc((1 - var(--p, 0)) * -2.2deg))
+    translateY(calc((1 - var(--p, 0)) * 16px));
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  box-shadow: 0 calc(var(--p, 0) * 26px) calc(var(--p, 0) * 52px)
+    rgba(20, 19, 17, calc(var(--p, 0) * 0.12));
+}
+
+.ireveal-card:hover {
+  box-shadow: 0 30px 60px rgba(20, 19, 17, 0.16);
+}
+
+.ireveal-card-eyebrow {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--ink-mute);
+}
+
+.ireveal-card-title {
+  font-family: var(--display);
+  font-size: 1.5rem;
+  font-weight: 500;
+}
+
+.ireveal-card-stats {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+  border-top: 1px solid var(--line);
+  padding-top: 14px;
+}
+
+.ireveal-card-stats div {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.ireveal-card-stats b {
+  font-family: var(--display);
+  font-size: 1.1rem;
+  font-weight: 500;
+}
+
+.ireveal-card-stats span {
+  font-size: 11px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--ink-mute);
+}
+
+.ireveal-card-btn {
+  align-self: flex-start;
+  margin-top: auto;
+  padding: 10px 18px;
+  border: 1px solid var(--ink);
+  border-radius: var(--radius-sm);
+  background: transparent;
+  color: var(--ink);
+  font-family: var(--sans);
+  font-size: 13.5px;
+  font-weight: 600;
+  transition: background 0.18s ease, color 0.18s ease;
+}
+
+.ireveal-card-btn:hover {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: var(--paper);
+}
+
+.ireveal-caption {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 12vh;
+  text-align: center;
+  min-height: 2.6em;
+}
+
+.ireveal-caption p {
+  position: absolute;
+  left: 0;
+  right: 0;
+  margin: 0;
+  font-family: var(--display);
+  font-style: italic;
+  font-size: clamp(1.15rem, 2.6vw, 1.75rem);
+  color: var(--ink-soft);
+  opacity: 0;
+  transform: translateY(8px);
+  transition: opacity 0.45s ease, transform 0.45s ease;
+}
+
+.ireveal-caption p.is-on {
+  opacity: 1;
+  transform: none;
+}
+
+@media (max-width: 720px) {
+  .ireveal { height: auto; }
+  .ireveal-stage { position: static; height: auto; padding: 80px 22px; flex-direction: column; gap: 32px; }
+  .ireveal-eyebrow { position: static; transform: none; }
+  .ireveal-wire { display: none; }
+  .ireveal-card {
+    position: static;
+    opacity: 1;
+    filter: none;
+    transform: none;
+    box-shadow: 0 20px 40px rgba(20, 19, 17, 0.1);
+  }
+  .ireveal-caption { position: static; min-height: 0; }
+  .ireveal-caption p { position: static; opacity: 1; transform: none; }
+  .ireveal-caption p:not(.is-on) { display: none; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ireveal { height: auto; }
+  .ireveal-stage { position: static; height: auto; padding: 96px 24px; }
+  .ireveal-wire { display: none; }
+  .ireveal-card { opacity: 1; filter: none; transform: none; }
+  .ireveal-caption { position: static; min-height: 0; }
+  .ireveal-caption p { position: static; opacity: 1; transform: none; }
+  .ireveal-caption p:not(.is-on) { display: none; }
+}
+
+/* ------------------------------------------------------------------ */
 /* Grids (shared)                                                     */
 /* ------------------------------------------------------------------ */
 
