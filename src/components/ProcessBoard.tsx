@@ -177,7 +177,7 @@ export default function ProcessBoard() {
     <section id="processo" className="pboard" ref={sectionRef}>
       <div className="pboard-sticky">
         <div className="pboard-head">
-          <span className="eyebrow">O processo</span>
+          <span className="eyebrow">A jornada de UX / UI</span>
           <h2 className="heading-xl">
             Antes de aparecer, ela passa por <span className="gradient-text">sete etapas</span>.
           </h2>

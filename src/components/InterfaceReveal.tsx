@@ -5,12 +5,120 @@ const clamp = (n: number, a = 0, b = 1) => Math.min(b, Math.max(a, n));
 const LINES = [
   "Começa como um rascunho.",
   "Ganha grid, cor e conteúdo.",
-  "Só então: uma interface de verdade.",
+  "Só então: telas de verdade, no bolso de alguém.",
 ];
+
+/* rough sketch of a phone screen — draws itself in */
+function PhoneWire({ draw }: { draw: number }) {
+  return (
+    <svg className="iph-wire" viewBox="0 0 160 320" fill="none" aria-hidden="true">
+      <g
+        filter="url(#irough)"
+        stroke="var(--ink-mute)"
+        strokeWidth="2"
+        pathLength={1}
+        strokeDasharray={1}
+        strokeDashoffset={1 - draw}
+      >
+        <line x1="20" y1="20" x2="60" y2="20" />
+        <rect x="20" y="40" width="120" height="26" rx="5" />
+        <rect x="20" y="82" width="120" height="34" rx="5" />
+        <rect x="20" y="126" width="120" height="34" rx="5" />
+        <rect x="20" y="170" width="120" height="34" rx="5" />
+        <rect x="20" y="232" width="120" height="30" rx="6" />
+        <line x1="20" y1="290" x2="140" y2="290" />
+      </g>
+    </svg>
+  );
+}
+
+function Screen({ i }: { i: number }) {
+  if (i === 0) {
+    return (
+      <div className="scr">
+        <div className="scr-status">
+          <span>9:41</span>
+          <span className="scr-dots" />
+        </div>
+        <div className="scr-h">Buscar</div>
+        <div className="scr-field">Especialidade, nome…</div>
+        {["Ana Prado", "Marcos Lima", "Júlia Sato"].map((n) => (
+          <div className="scr-row" key={n}>
+            <span className="scr-av" />
+            <span>
+              <b>{n}</b>
+              <i>disponível hoje</i>
+            </span>
+          </div>
+        ))}
+        <div className="scr-tabs">
+          <span className="on" />
+          <span />
+          <span />
+        </div>
+      </div>
+    );
+  }
+  if (i === 1) {
+    return (
+      <div className="scr">
+        <div className="scr-status">
+          <span>9:41</span>
+          <span className="scr-dots" />
+        </div>
+        <div className="scr-h">Escolher horário</div>
+        <div className="scr-day">Quinta, 12 set</div>
+        <div className="scr-grid">
+          {["08:00", "08:30", "09:00", "09:30", "10:00", "10:30"].map((t, k) => (
+            <span key={t} className={k === 3 ? "sel" : ""}>
+              {t}
+            </span>
+          ))}
+        </div>
+        <div className="scr-cta">Confirmar 09:30</div>
+        <div className="scr-tabs">
+          <span />
+          <span className="on" />
+          <span />
+        </div>
+      </div>
+    );
+  }
+  return (
+    <div className="scr">
+      <div className="scr-status">
+        <span>9:41</span>
+        <span className="scr-dots" />
+      </div>
+      <div className="scr-check" aria-hidden="true">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round">
+          <polyline points="4 12 10 18 20 6" />
+        </svg>
+      </div>
+      <div className="scr-h center">Confirmado</div>
+      <div className="scr-sum">
+        <div>
+          <i>Profissional</i>
+          <b>Ana Prado</b>
+        </div>
+        <div>
+          <i>Quando</i>
+          <b>Qui, 12 set · 09:30</b>
+        </div>
+      </div>
+      <div className="scr-cta ghost">Adicionar ao calendário</div>
+      <div className="scr-tabs">
+        <span />
+        <span />
+        <span className="on" />
+      </div>
+    </div>
+  );
+}
 
 export default function InterfaceReveal() {
   const stageRef = useRef<HTMLDivElement>(null);
-  const siteRef = useRef<HTMLDivElement>(null);
+  const rowRef = useRef<HTMLDivElement>(null);
   const [p, setP] = useState(0);
 
   useEffect(() => {
@@ -20,7 +128,6 @@ export default function InterfaceReveal() {
       setP(1);
       return;
     }
-
     let raf = 0;
     const tick = () => {
       raf = 0;
@@ -42,36 +149,37 @@ export default function InterfaceReveal() {
   }, []);
 
   useEffect(() => {
-    const site = siteRef.current;
-    if (!site) return;
+    const row = rowRef.current;
+    if (!row) return;
     const onMove = (e: MouseEvent) => {
-      const r = site.getBoundingClientRect();
+      const r = row.getBoundingClientRect();
       const dx = (e.clientX - (r.left + r.width / 2)) / r.width;
-      const dy = (e.clientY - (r.top + r.height / 2)) / r.height;
-      site.style.setProperty("--tilt-x", `${(-dy * 3).toFixed(2)}deg`);
-      site.style.setProperty("--tilt-y", `${(dx * 4).toFixed(2)}deg`);
-    };
-    const reset = () => {
-      site.style.setProperty("--tilt-x", "0deg");
-      site.style.setProperty("--tilt-y", "0deg");
+      row.style.setProperty("--rot", `${(dx * 5).toFixed(2)}deg`);
     };
     window.addEventListener("mousemove", onMove);
-    site.addEventListener("mouseleave", reset);
-    return () => {
-      window.removeEventListener("mousemove", onMove);
-      site.removeEventListener("mouseleave", reset);
-    };
+    return () => window.removeEventListener("mousemove", onMove);
   }, []);
 
   const draw = clamp(p * 2.6);
   const lineIdx = p < 0.42 ? 0 : p < 0.76 ? 1 : 2;
+
+  const phoneStyle = (i: number) => {
+    const ci = clamp((p - 0.3 - i * 0.08) / 0.28);
+    const inv = 1 - ci;
+    return {
+      "--scr-op": ci,
+      "--scr-blur": `${(inv * 4).toFixed(2)}px`,
+      transform: `translateY(${(inv * 26).toFixed(1)}px) rotate(calc(var(--rot, 0deg) * ${1 + i * 0.15}))`,
+    } as React.CSSProperties;
+  };
+  const wireOpacity = clamp(1.15 - p * 2.1);
 
   return (
     <section
       id="interface"
       className="ireveal"
       ref={stageRef}
-      style={{ ["--p" as string]: p, ["--draw" as string]: draw }}
+      style={{ ["--p" as string]: p }}
     >
       <div className="ireveal-stage">
         <div className="ireveal-bg" aria-hidden="true">
@@ -83,100 +191,25 @@ export default function InterfaceReveal() {
 
         <span className="eyebrow ireveal-eyebrow">A interface aparece</span>
 
-        <div className="ireveal-frame">
-          {/* full-page wireframe that draws itself in, then fades */}
-          <svg className="ireveal-wire" viewBox="0 0 640 440" fill="none" aria-hidden="true">
-            <filter id="rough">
-              <feTurbulence type="fractalNoise" baseFrequency="0.04" numOctaves="2" seed="7" result="n" />
-              <feDisplacementMap in="SourceGraphic" in2="n" scale="4" />
-            </filter>
-            <g
-              filter="url(#rough)"
-              stroke="var(--ink-mute)"
-              strokeWidth="1.6"
-              pathLength={1}
-              strokeDasharray={1}
-              strokeDashoffset={1 - draw}
-            >
-              {/* browser frame */}
-              <rect x="12" y="10" width="616" height="420" rx="12" />
-              <line x1="12" y1="44" x2="628" y2="44" />
-              <circle cx="30" cy="27" r="3.5" />
-              <circle cx="44" cy="27" r="3.5" />
-              <circle cx="58" cy="27" r="3.5" />
-              <rect x="86" y="20" width="240" height="14" rx="7" />
-              {/* nav */}
-              <rect x="34" y="64" width="70" height="14" rx="3" />
-              <rect x="474" y="66" width="34" height="10" rx="3" />
-              <rect x="520" y="66" width="34" height="10" rx="3" />
-              <rect x="566" y="66" width="34" height="10" rx="3" />
-              {/* hero */}
-              <rect x="34" y="112" width="300" height="30" rx="4" />
-              <rect x="34" y="152" width="230" height="30" rx="4" />
-              <rect x="34" y="200" width="270" height="12" rx="3" />
-              <rect x="34" y="228" width="110" height="34" rx="6" />
-              <rect x="372" y="108" width="234" height="158" rx="10" />
-              {/* three columns */}
-              <rect x="34" y="300" width="180" height="96" rx="6" />
-              <rect x="230" y="300" width="180" height="96" rx="6" />
-              <rect x="426" y="300" width="180" height="96" rx="6" />
-              {/* footer */}
-              <line x1="34" y1="414" x2="606" y2="414" />
-            </g>
-          </svg>
+        <svg width="0" height="0" aria-hidden="true" style={{ position: "absolute" }}>
+          <filter id="irough">
+            <feTurbulence type="fractalNoise" baseFrequency="0.04" numOctaves="2" seed="7" result="n" />
+            <feDisplacementMap in="SourceGraphic" in2="n" scale="4" />
+          </filter>
+        </svg>
 
-          {/* the real, built page that sharpens in */}
-          <div
-            className="ireveal-site"
-            ref={siteRef}
-            style={{ pointerEvents: p > 0.8 ? "auto" : "none" }}
-          >
-            <div className="site-bar">
-              <i />
-              <i />
-              <i />
-              <span className="site-url">estudo-de-caso.web</span>
-            </div>
-            <div className="site-body">
-              <div className="site-nav">
-                <b>Ateliê</b>
-                <nav>
-                  <a>Trabalho</a>
-                  <a>Sobre</a>
-                  <a>Contato</a>
-                </nav>
+        <div className="ireveal-phones" ref={rowRef}>
+          {[0, 1, 2].map((i) => (
+            <div className="iph" key={i} style={phoneStyle(i)}>
+              <span className="iph-notch" aria-hidden="true" />
+              <div className="iph-wirewrap" style={{ opacity: wireOpacity }}>
+                <PhoneWire draw={draw} />
               </div>
-              <div className="site-hero">
-                <div className="site-hero-copy">
-                  <span className="site-eyebrow">Estudo de caso</span>
-                  <h4>
-                    Do rascunho <em>ao produto</em>.
-                  </h4>
-                  <p>Uma página desenhada e construída pela mesma mão.</p>
-                  <span className="site-btn">Começar →</span>
-                </div>
-                <div className="site-hero-media" />
-              </div>
-              <div className="site-features">
-                <div>
-                  <b>Pesquisa</b>
-                  <span>o que a pessoa precisa</span>
-                </div>
-                <div>
-                  <b>Design</b>
-                  <span>sistema e protótipo</span>
-                </div>
-                <div>
-                  <b>Código</b>
-                  <span>entrega em produção</span>
-                </div>
-              </div>
-              <div className="site-footer">
-                <span>© Ateliê</span>
-                <span>feito à mão</span>
+              <div className="iph-scrwrap">
+                <Screen i={i} />
               </div>
             </div>
-          </div>
+          ))}
         </div>
 
         <div className="ireveal-caption">
