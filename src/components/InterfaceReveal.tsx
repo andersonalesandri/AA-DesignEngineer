@@ -3,14 +3,14 @@ import { useEffect, useRef, useState } from "react";
 const clamp = (n: number, a = 0, b = 1) => Math.min(b, Math.max(a, n));
 
 const LINES = [
-  "Do traço à tela.",
+  "Começa como um rascunho.",
   "Ganha grid, cor e conteúdo.",
   "Só então: uma interface de verdade.",
 ];
 
 export default function InterfaceReveal() {
   const stageRef = useRef<HTMLDivElement>(null);
-  const cardRef = useRef<HTMLDivElement>(null);
+  const siteRef = useRef<HTMLDivElement>(null);
   const [p, setP] = useState(0);
 
   useEffect(() => {
@@ -41,30 +41,29 @@ export default function InterfaceReveal() {
     };
   }, []);
 
-  // cursor parallax, only once the component is "live"
   useEffect(() => {
-    const card = cardRef.current;
-    if (!card) return;
+    const site = siteRef.current;
+    if (!site) return;
     const onMove = (e: MouseEvent) => {
-      const r = card.getBoundingClientRect();
+      const r = site.getBoundingClientRect();
       const dx = (e.clientX - (r.left + r.width / 2)) / r.width;
       const dy = (e.clientY - (r.top + r.height / 2)) / r.height;
-      card.style.setProperty("--tilt-x", `${(-dy * 4).toFixed(2)}deg`);
-      card.style.setProperty("--tilt-y", `${(dx * 5).toFixed(2)}deg`);
+      site.style.setProperty("--tilt-x", `${(-dy * 3).toFixed(2)}deg`);
+      site.style.setProperty("--tilt-y", `${(dx * 4).toFixed(2)}deg`);
     };
     const reset = () => {
-      card.style.setProperty("--tilt-x", "0deg");
-      card.style.setProperty("--tilt-y", "0deg");
+      site.style.setProperty("--tilt-x", "0deg");
+      site.style.setProperty("--tilt-y", "0deg");
     };
     window.addEventListener("mousemove", onMove);
-    card.addEventListener("mouseleave", reset);
+    site.addEventListener("mouseleave", reset);
     return () => {
       window.removeEventListener("mousemove", onMove);
-      card.removeEventListener("mouseleave", reset);
+      site.removeEventListener("mouseleave", reset);
     };
   }, []);
 
-  const draw = clamp(p * 2.8); // stroke "draws in" over first third
+  const draw = clamp(p * 2.6);
   const lineIdx = p < 0.42 ? 0 : p < 0.76 ? 1 : 2;
 
   return (
@@ -75,18 +74,20 @@ export default function InterfaceReveal() {
       style={{ ["--p" as string]: p, ["--draw" as string]: draw }}
     >
       <div className="ireveal-stage">
+        <div className="ireveal-bg" aria-hidden="true">
+          <video autoPlay muted loop playsInline preload="none" poster="/media/hero-texture.jpg">
+            <source src="/media/hero-texture.webm" type="video/webm" />
+            <source src="/media/hero-texture.mp4" type="video/mp4" />
+          </video>
+        </div>
+
         <span className="eyebrow ireveal-eyebrow">A interface aparece</span>
 
         <div className="ireveal-frame">
-          {/* hand-drawn wireframe that fades out */}
-          <svg
-            className="ireveal-wire"
-            viewBox="0 0 420 300"
-            fill="none"
-            aria-hidden="true"
-          >
+          {/* full-page wireframe that draws itself in, then fades */}
+          <svg className="ireveal-wire" viewBox="0 0 640 440" fill="none" aria-hidden="true">
             <filter id="rough">
-              <feTurbulence type="fractalNoise" baseFrequency="0.045" numOctaves="2" seed="7" result="n" />
+              <feTurbulence type="fractalNoise" baseFrequency="0.04" numOctaves="2" seed="7" result="n" />
               <feDisplacementMap in="SourceGraphic" in2="n" scale="4" />
             </filter>
             <g
@@ -97,42 +98,84 @@ export default function InterfaceReveal() {
               strokeDasharray={1}
               strokeDashoffset={1 - draw}
             >
-              <rect x="18" y="16" width="384" height="268" rx="10" />
-              <rect x="40" y="42" width="70" height="14" rx="3" />
-              <rect x="40" y="74" width="250" height="26" rx="3" />
-              <line x1="40" y1="122" x2="380" y2="122" />
-              <rect x="40" y="146" width="96" height="60" rx="6" />
-              <rect x="162" y="146" width="96" height="60" rx="6" />
-              <rect x="284" y="146" width="96" height="60" rx="6" />
-              <rect x="40" y="230" width="130" height="34" rx="6" />
+              {/* browser frame */}
+              <rect x="12" y="10" width="616" height="420" rx="12" />
+              <line x1="12" y1="44" x2="628" y2="44" />
+              <circle cx="30" cy="27" r="3.5" />
+              <circle cx="44" cy="27" r="3.5" />
+              <circle cx="58" cy="27" r="3.5" />
+              <rect x="86" y="20" width="240" height="14" rx="7" />
+              {/* nav */}
+              <rect x="34" y="64" width="70" height="14" rx="3" />
+              <rect x="474" y="66" width="34" height="10" rx="3" />
+              <rect x="520" y="66" width="34" height="10" rx="3" />
+              <rect x="566" y="66" width="34" height="10" rx="3" />
+              {/* hero */}
+              <rect x="34" y="112" width="300" height="30" rx="4" />
+              <rect x="34" y="152" width="230" height="30" rx="4" />
+              <rect x="34" y="200" width="270" height="12" rx="3" />
+              <rect x="34" y="228" width="110" height="34" rx="6" />
+              <rect x="372" y="108" width="234" height="158" rx="10" />
+              {/* three columns */}
+              <rect x="34" y="300" width="180" height="96" rx="6" />
+              <rect x="230" y="300" width="180" height="96" rx="6" />
+              <rect x="426" y="300" width="180" height="96" rx="6" />
+              {/* footer */}
+              <line x1="34" y1="414" x2="606" y2="414" />
             </g>
           </svg>
 
-          {/* the real, live component that sharpens in */}
+          {/* the real, built page that sharpens in */}
           <div
-            className="ireveal-card"
-            ref={cardRef}
+            className="ireveal-site"
+            ref={siteRef}
             style={{ pointerEvents: p > 0.8 ? "auto" : "none" }}
           >
-            <span className="ireveal-card-eyebrow">Componente</span>
-            <div className="ireveal-card-title">Card de caso</div>
-            <div className="ireveal-card-stats">
-              <div>
-                <b>6</b>
-                <span>etapas</span>
+            <div className="site-bar">
+              <i />
+              <i />
+              <i />
+              <span className="site-url">estudo-de-caso.web</span>
+            </div>
+            <div className="site-body">
+              <div className="site-nav">
+                <b>Ateliê</b>
+                <nav>
+                  <a>Trabalho</a>
+                  <a>Sobre</a>
+                  <a>Contato</a>
+                </nav>
               </div>
-              <div>
-                <b>12</b>
-                <span>anos</span>
+              <div className="site-hero">
+                <div className="site-hero-copy">
+                  <span className="site-eyebrow">Estudo de caso</span>
+                  <h4>
+                    Do rascunho <em>ao produto</em>.
+                  </h4>
+                  <p>Uma página desenhada e construída pela mesma mão.</p>
+                  <span className="site-btn">Começar →</span>
+                </div>
+                <div className="site-hero-media" />
               </div>
-              <div>
-                <b>100%</b>
-                <span>no ar</span>
+              <div className="site-features">
+                <div>
+                  <b>Pesquisa</b>
+                  <span>o que a pessoa precisa</span>
+                </div>
+                <div>
+                  <b>Design</b>
+                  <span>sistema e protótipo</span>
+                </div>
+                <div>
+                  <b>Código</b>
+                  <span>entrega em produção</span>
+                </div>
+              </div>
+              <div className="site-footer">
+                <span>© Ateliê</span>
+                <span>feito à mão</span>
               </div>
             </div>
-            <button type="button" className="ireveal-card-btn">
-              Ver caso →
-            </button>
           </div>
         </div>
 
