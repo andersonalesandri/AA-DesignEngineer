@@ -474,11 +474,27 @@ ul, ol {
 /* ------------------------------------------------------------------ */
 
 .pill-dot {
-  width: 7px;
-  height: 7px;
+  position: relative;
+  width: 11px;
+  height: 11px;
   border-radius: 50%;
-  background: var(--sage);
+  background: var(--accent);
   flex-shrink: 0;
+  animation: pblip-core 2.6s ease-in-out infinite;
+}
+
+.pill-dot::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  background: var(--accent);
+  animation: pblip-ping 2.6s ease-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .pill-dot { animation: none; }
+  .pill-dot::after { display: none; }
 }
 
 .tag {
@@ -1673,8 +1689,109 @@ ul, ol {
 
 .arail {
   position: relative;
-  height: 380vh;
+  height: 260vh;
   background: var(--paper);
+}
+
+/* trajectory — 2 columns below the rail, no cards */
+.atl-wrap {
+  max-width: var(--maxw);
+  margin: 0 auto;
+  padding: 12px 32px 108px;
+}
+
+.atl-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 30px;
+}
+
+.atl-label::before {
+  content: "";
+  width: 22px;
+  height: 1px;
+  background: color-mix(in srgb, var(--accent) 55%, transparent);
+}
+
+.atl-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 44px 56px;
+}
+
+@media (max-width: 760px) {
+  .atl-wrap { padding: 8px 22px 80px; }
+  .atl-grid { grid-template-columns: 1fr; gap: 32px; }
+}
+
+.atl-item {
+  display: grid;
+  grid-template-columns: 44px 1fr;
+  gap: 18px;
+}
+
+.atl-ic {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: 1px solid color-mix(in srgb, var(--accent) 55%, transparent);
+  color: var(--accent);
+  display: grid;
+  place-items: center;
+}
+
+.atl-ic svg { width: 20px; height: 20px; }
+
+.atl-year {
+  font-family: var(--display);
+  font-size: 0.95rem;
+  color: var(--accent);
+  margin-bottom: 4px;
+}
+
+.atl-role {
+  font-family: var(--display);
+  font-weight: 500;
+  font-size: 1.16rem;
+  line-height: 1.25;
+}
+
+.atl-org {
+  color: var(--ink-mute);
+  font-size: 0.82rem;
+  margin-top: 3px;
+}
+
+.atl-bullets {
+  margin-top: 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 9px;
+}
+
+.atl-bullets li {
+  position: relative;
+  padding-left: 16px;
+  font-size: 0.86rem;
+  color: var(--ink-soft);
+  line-height: 1.55;
+}
+
+.atl-bullets li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.55em;
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: var(--accent);
 }
 
 .arail-sticky {
@@ -1707,89 +1824,109 @@ ul, ol {
 .arail-track {
   position: relative;
   display: flex;
-  gap: 24px;
-  padding: 0 32px;
+  gap: 26px;
+  padding: 78px 32px 0;
   margin: auto 0;
   align-items: stretch;
   will-change: transform;
 }
 
-/* line threading the cards together */
+/* journey rail above the cards */
 .arail-track::before {
   content: "";
   position: absolute;
   left: 32px;
   right: 32px;
-  top: 52px;
-  height: 2px;
-  background: var(--accent);
-  z-index: 0;
+  top: 43px;
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    var(--accent) 4%,
+    color-mix(in srgb, var(--accent) 45%, transparent) 50%,
+    var(--accent) 96%,
+    transparent
+  );
+  opacity: 0.45;
 }
 
 .apanel {
   position: relative;
-  z-index: 1;
   flex: 0 0 auto;
-  width: clamp(280px, 72vw, 400px);
+  width: clamp(280px, 74vw, 410px);
   display: flex;
   flex-direction: column;
-  padding: 30px;
+  padding: 28px;
+  border: 1px solid var(--line);
   border-radius: var(--radius);
-  /* solid orange — sets the About rail apart from the charcoal process rail.
-     Orange background => white text, always. */
-  background: #ee5f22;
-  color: #ffffff;
-  transition: transform 0.25s ease, box-shadow 0.25s ease;
+  background: var(--paper-raise);
+  transition: border-color 0.25s ease, box-shadow 0.3s ease;
 }
 
 .apanel:hover {
-  transform: scale(1.02);
-  z-index: 2;
-  box-shadow: 0 18px 44px rgba(0, 0, 0, 0.3);
-  animation: apanel-blink 0.5s ease;
+  border-color: var(--accent);
+  box-shadow:
+    0 6px 26px -10px color-mix(in srgb, var(--accent) 32%, transparent),
+    0 0 40px -16px color-mix(in srgb, var(--accent) 24%, transparent);
 }
 
-@keyframes apanel-blink {
-  0%, 100% { filter: brightness(1); }
-  40% { filter: brightness(1.16); }
-  62% { filter: brightness(0.97); }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .apanel:hover { transform: none; animation: none; }
-}
-
-.apanel .apanel-title,
-.apanel .apanel-year-tag {
-  color: #ffffff;
-}
-.apanel .apanel-desc,
-.apanel .apanel-bullets li {
-  color: rgba(255, 255, 255, 0.9);
-}
-.apanel .apanel-org {
-  color: rgba(255, 255, 255, 0.72);
-}
-.apanel .apanel-glyph {
-  border-color: rgba(255, 255, 255, 0.5);
-  color: #ffffff;
-}
-.apanel .apanel-bullets li::before {
-  background: #ffffff;
-}
-
-.apanel-glyph {
+/* glyph medallion — centred above the card, on the rail */
+.apanel-marker {
+  position: absolute;
+  top: -58px;
+  left: 50%;
+  width: 46px;
+  height: 46px;
+  margin-left: -23px;
   display: grid;
   place-items: center;
-  width: 44px;
-  height: 44px;
   border-radius: 50%;
-  border: 1px solid color-mix(in srgb, var(--accent) 50%, transparent);
+  border: 1px solid color-mix(in srgb, var(--accent) 55%, transparent);
+  background: var(--paper);
   color: var(--accent);
-  margin-bottom: 20px;
 }
 
-.apanel-glyph svg { width: 22px; height: 22px; }
+.apanel-marker svg { width: 23px; height: 23px; }
+
+.apanel-marker::before {
+  content: "";
+  position: absolute;
+  top: 46px;
+  left: 50%;
+  width: 1px;
+  height: 12px;
+  background: var(--accent);
+  opacity: 0.4;
+  transform: translateX(-50%);
+}
+
+/* blinking beacon next to the title */
+.apanel-namerow {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.apanel-blip {
+  position: relative;
+  flex-shrink: 0;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: var(--accent);
+  animation: pblip-core 2.6s ease-in-out infinite;
+  animation-delay: calc(var(--i, 0) * 0.3s);
+}
+
+.apanel-blip::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  background: var(--accent);
+  animation: pblip-ping 2.6s ease-out infinite;
+  animation-delay: calc(var(--i, 0) * 0.3s);
+}
 
 .apanel-title {
   font-family: var(--display);
@@ -1806,9 +1943,8 @@ ul, ol {
 }
 
 .apanel-year-tag {
-  font-size: 12.5px;
-  font-weight: 600;
-  letter-spacing: 0.04em;
+  font-family: var(--display);
+  font-size: 0.95rem;
   color: var(--accent);
   margin-bottom: 12px;
 }
@@ -1816,7 +1952,7 @@ ul, ol {
 .apanel-org {
   color: var(--ink-mute);
   font-size: 0.82rem;
-  margin-top: 3px;
+  margin-top: 6px;
 }
 
 .apanel-bullets {
@@ -1867,15 +2003,18 @@ ul, ol {
     transform: none !important;
   }
   .arail-track::before { display: none; }
-  .apanel { width: auto; }
+  .apanel { width: auto; padding-top: 28px; }
+  .apanel-marker { position: static; margin: 0 0 14px; }
+  .apanel-marker::before { display: none; }
   .arail-progress { display: none; }
 }
 
 @media (prefers-reduced-motion: reduce) {
   .arail { height: auto; }
   .arail-sticky { position: static; height: auto; overflow: visible; }
-  .arail-track { flex-wrap: wrap; transform: none !important; }
-  .arail-track::before { display: none; }
+  .arail-track { flex-wrap: wrap; padding-top: 88px; transform: none !important; }
+  .apanel-blip, .apanel-blip::after { animation: none; }
+  .apanel-blip::after { display: none; }
   .arail-progress { display: none; }
 }
 

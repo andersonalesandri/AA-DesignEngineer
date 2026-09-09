@@ -11,24 +11,10 @@ const S = {
   strokeLinejoin: "round" as const,
 };
 
-type Panel =
-  | {
-      kind: "principle";
-      glyph: ReactNode;
-      title: string;
-      desc: string;
-    }
-  | {
-      kind: "year";
-      year: string;
-      role: string;
-      org: string;
-      bullets: string[];
-    };
+type Principle = { glyph: ReactNode; title: string; desc: string };
 
-const PANELS: Panel[] = [
+const PRINCIPLES: Principle[] = [
   {
-    kind: "principle",
     glyph: (
       <svg viewBox="0 0 24 24" {...S}>
         <rect x="3" y="3" width="18" height="18" rx="2" />
@@ -40,7 +26,6 @@ const PANELS: Panel[] = [
       "Acompanho o produto do layout ao código exposto ao usuário, garantindo que o que foi desenhado é o que chega na tela.",
   },
   {
-    kind: "principle",
     glyph: (
       <svg viewBox="0 0 24 24" {...S}>
         <circle cx="12" cy="12" r="3" />
@@ -56,7 +41,6 @@ const PANELS: Panel[] = [
       "Tokens, componentes reutilizáveis e prototipação de alta fidelidade — bibliotecas que o time inteiro usa sem quebrar.",
   },
   {
-    kind: "principle",
     glyph: (
       <svg viewBox="0 0 24 24" {...S}>
         <path d="M12 3v3M12 18v3M3 12h3M18 12h3M5.6 5.6l2.1 2.1M16.3 16.3l2.1 2.1M18.4 5.6l-2.1 2.1M7.7 16.3l-2.1 2.1" />
@@ -68,7 +52,6 @@ const PANELS: Panel[] = [
       "Agentes de IA orquestrados em nuvem para acelerar entregas, com engenharia de contexto e de prompt aplicada ao código.",
   },
   {
-    kind: "principle",
     glyph: (
       <svg viewBox="0 0 24 24" {...S}>
         <path d="M13 2 3 14h7l-1 8 10-12h-7z" />
@@ -78,8 +61,17 @@ const PANELS: Panel[] = [
     desc:
       "Código limpo, semântico e responsivo, com foco em WCAG, SEO técnico e carregamento otimizado.",
   },
+];
+
+const clock = (
+  <svg viewBox="0 0 24 24" {...S}>
+    <circle cx="12" cy="12" r="9" />
+    <path d="M12 7v5l3.5 2" />
+  </svg>
+);
+
+const TRAJ = [
   {
-    kind: "year",
     year: "2018 — Presente",
     role: "Design Engineer & Estrategista Digital",
     org: "Freelancer / Consultor",
@@ -90,7 +82,6 @@ const PANELS: Panel[] = [
     ],
   },
   {
-    kind: "year",
     year: "2010 — 2018",
     role: "Web Designer & Especialista em Interface",
     org: "Design visual e front-end",
@@ -138,57 +129,76 @@ export default function About() {
   }, []);
 
   const scrub = clamp((p - INTRO) / (1 - INTRO));
-  const current = Math.min(PANELS.length, Math.floor(scrub * PANELS.length) + 1);
+  const current = Math.min(PRINCIPLES.length, Math.floor(scrub * PRINCIPLES.length) + 1);
 
   return (
-    <section id="identity" className="arail" ref={sectionRef}>
-      <div className="arail-sticky">
-        <div className="arail-head">
-          <span className="eyebrow">Quem faz</span>
-          <h2 className="heading-xl">
-            A Engenharia <span className="gradient-text">por trás do</span>{" "}
-            <span className="kw">Design</span>.
-          </h2>
-          <p className="lede">
-            Não fico só na entrega visual. Desenho a arquitetura de como a
-            interface se comporta — e como o sistema evolui com o produto.
-          </p>
-        </div>
+    <>
+      <section id="identity" className="arail" ref={sectionRef}>
+        <div className="arail-sticky">
+          <div className="arail-head">
+            <span className="eyebrow">Quem faz</span>
+            <h2 className="heading-xl">
+              A Engenharia <span className="gradient-text">por trás do</span>{" "}
+              <span className="kw">Design</span>.
+            </h2>
+            <p className="lede">
+              Não fico só na entrega visual. Desenho a arquitetura de como a
+              interface se comporta — e como o sistema evolui com o produto.
+            </p>
+          </div>
 
-        <div className="arail-track" ref={trackRef}>
-          {PANELS.map((panel, i) =>
-            panel.kind === "principle" ? (
-              <article className="apanel" key={i}>
-                <span className="apanel-glyph" aria-hidden="true">
+          <div className="arail-track" ref={trackRef}>
+            {PRINCIPLES.map((panel, i) => (
+              <article
+                className="apanel"
+                key={panel.title}
+                style={{ ["--i" as string]: i }}
+              >
+                <span className="apanel-marker" aria-hidden="true">
                   {panel.glyph}
                 </span>
-                <h3 className="apanel-title">{panel.title}</h3>
+                <div className="apanel-namerow">
+                  <span className="apanel-blip" aria-hidden="true" />
+                  <h3 className="apanel-title">{panel.title}</h3>
+                </div>
                 <p className="apanel-desc">{panel.desc}</p>
               </article>
-            ) : (
-              <article className="apanel apanel-year" key={i}>
-                <div className="apanel-year-tag">{panel.year}</div>
-                <h3 className="apanel-title">{panel.role}</h3>
-                <div className="apanel-org">{panel.org}</div>
-                <ul className="apanel-bullets">
-                  {panel.bullets.map((b) => (
+            ))}
+          </div>
+
+          <div className="arail-progress" aria-hidden="true">
+            <span className="pboard-count">
+              {String(current).padStart(2, "0")} / {String(PRINCIPLES.length).padStart(2, "0")}
+            </span>
+            <span className="pboard-rail">
+              <span className="pboard-fill" style={{ transform: `scaleX(${Math.max(0.04, p)})` }} />
+            </span>
+          </div>
+        </div>
+      </section>
+
+      <div className="atl-wrap">
+        <span className="atl-label">Trajetória</span>
+        <div className="atl-grid">
+          {TRAJ.map((t) => (
+            <div className="atl-item" key={t.year}>
+              <span className="atl-ic" aria-hidden="true">
+                {clock}
+              </span>
+              <div>
+                <div className="atl-year">{t.year}</div>
+                <h3 className="atl-role">{t.role}</h3>
+                <div className="atl-org">{t.org}</div>
+                <ul className="atl-bullets">
+                  {t.bullets.map((b) => (
                     <li key={b}>{b}</li>
                   ))}
                 </ul>
-              </article>
-            )
-          )}
-        </div>
-
-        <div className="arail-progress" aria-hidden="true">
-          <span className="pboard-count">
-            {String(current).padStart(2, "0")} / {String(PANELS.length).padStart(2, "0")}
-          </span>
-          <span className="pboard-rail">
-            <span className="pboard-fill" style={{ transform: `scaleX(${Math.max(0.04, p)})` }} />
-          </span>
+              </div>
+            </div>
+          ))}
         </div>
       </div>
-    </section>
+    </>
   );
 }
