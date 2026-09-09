@@ -2490,6 +2490,44 @@ ul, ol {
   color: var(--ink-mute);
 }
 
+/* attributed idea/motto — not a verbatim quote, so no quote marks */
+.lab-principle {
+  margin: 20px 0;
+  padding: 14px 16px;
+  border: 1px solid var(--line-strong);
+  border-radius: var(--radius-sm);
+  max-width: 54ch;
+}
+
+.lab-principle-label {
+  display: block;
+  font-size: 10.5px;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--ink-mute);
+  margin-bottom: 6px;
+}
+
+.lab-principle p {
+  font-size: 0.95rem;
+  line-height: 1.5;
+  color: var(--ink-soft);
+}
+
+.lab-principle p b {
+  color: var(--accent);
+  font-weight: 600;
+}
+
+.lab-principle cite {
+  display: block;
+  margin-top: 6px;
+  font-style: normal;
+  font-size: 0.78rem;
+  color: var(--ink-mute);
+}
+
 .lab-refs {
   margin-top: 18px;
 }
