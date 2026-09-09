@@ -15,22 +15,20 @@ export default function App() {
         <Opening />
         <InterfaceReveal />
         <div className="section-divider section-divider--dotted" />
-        <ProcessBoard />
-        <div className="tone-dark tone-tint">
-          <Projects />
+        <div className="tone-dark">
+          <ProcessBoard />
         </div>
-        <div className="tone-dark tone-tint">
+        <Projects />
+        <div className="tone-dark">
           <About />
         </div>
+        <Laboratory />
         <div className="tone-dark">
-          <Laboratory />
-        </div>
-        <div className="tone-dark tone-deep">
           <Contact />
         </div>
       </main>
 
-      <div className="tone-dark tone-deep">
+      <div className="tone-dark">
         <footer className="footer">
           <div className="footer-name">
             Anderson Alessandri — Designer de Interface &amp; Design Engineer

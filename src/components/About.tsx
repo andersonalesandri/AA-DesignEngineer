@@ -146,7 +146,8 @@ export default function About() {
         <div className="arail-head">
           <span className="eyebrow">Quem faz</span>
           <h2 className="heading-xl">
-            A Engenharia <span className="gradient-text">por trás do Design</span>.
+            A Engenharia <span className="gradient-text">por trás do</span>{" "}
+            <span className="kw">Design</span>.
           </h2>
           <p className="lede">
             Não fico só na entrega visual. Desenho a arquitetura de como a

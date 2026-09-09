@@ -116,8 +116,8 @@ export default function Opening() {
           <span className="eyebrow">Designer de Interface · Rio de Janeiro</span>
           <h1 className="hero-name">Anderson Alessandri</h1>
           <p className="hero-statement">
-            Desenho interfaces <span className="em">e o processo</span> que leva
-            até elas.
+            Desenho <span className="kw">interfaces</span>{" "}
+            <span className="em">e o processo</span> que leva até elas.
           </p>
           <p className="lede hero-lede">
             Há 12 anos na ponte entre design de produto e engenharia front-end.

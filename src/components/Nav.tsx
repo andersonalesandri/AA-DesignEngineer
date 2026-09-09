@@ -10,6 +10,7 @@ const LINKS = [
 export default function Nav() {
   const [active, setActive] = useState("home");
   const [menuOpen, setMenuOpen] = useState(false);
+  const [onDark, setOnDark] = useState(false);
 
   useEffect(() => {
     const sections = [...LINKS.map((l) => l.id), "contact"]
@@ -31,8 +32,36 @@ export default function Nav() {
     return () => observer.disconnect();
   }, []);
 
+  // invert the nav over dark bands — the bar is fixed, sections scroll under it
+  useEffect(() => {
+    const darks = Array.from(
+      document.querySelectorAll<HTMLElement>(".tone-dark")
+    );
+    let raf = 0;
+    const check = () => {
+      raf = 0;
+      const probe = 30; // a little below the top edge, where the bar sits
+      const over = darks.some((el) => {
+        const r = el.getBoundingClientRect();
+        return r.top <= probe && r.bottom > probe;
+      });
+      setOnDark(over);
+    };
+    const onScroll = () => {
+      if (!raf) raf = requestAnimationFrame(check);
+    };
+    check();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    window.addEventListener("resize", onScroll);
+    return () => {
+      window.removeEventListener("scroll", onScroll);
+      window.removeEventListener("resize", onScroll);
+      if (raf) cancelAnimationFrame(raf);
+    };
+  }, []);
+
   return (
-    <div className="nav-wrap">
+    <div className={`nav-wrap ${onDark ? "on-dark" : ""}`}>
       <nav className="nav">
         <a href="#home" className="nav-logo">
           <span className="nav-dot" />
