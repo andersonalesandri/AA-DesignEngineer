@@ -44,6 +44,11 @@ const LAB_ITEMS: LabItem[] = [
     title: "Front-End & Arquitetura de Componentes Web",
     desc:
       "Composição de componentes, design tokens, tipagem e acessibilidade na prática — construir bibliotecas que o time inteiro usa sem quebrar, com CSS moderno (grid, container queries, cascade layers), React e TypeScript. Fundamentos consolidados na Rocketseat, de Diego Fernandes e Mayk Brito.",
+    quote: {
+      text: "O poder da Web está na sua universalidade — o acesso por todos, independentemente de deficiência, é um aspecto essencial.",
+      author: "Tim Berners-Lee",
+      source: "criador da Web · W3C",
+    },
     refs: [
       { label: "Rocketseat — Diego Fernandes & Mayk Brito", url: "https://www.rocketseat.com.br/" },
       { label: "MDN Web Docs", url: "https://developer.mozilla.org/" },
@@ -63,6 +68,11 @@ const LAB_ITEMS: LabItem[] = [
     title: "Cloud & Automação com Agentes de IA",
     desc:
       "Orquestração de agentes de IA em produção: engenharia de contexto e de prompt, definição de ferramentas e limites, avaliação de saídas e integração com fluxos reais via n8n, webhooks e filas — com deploy, observabilidade e custo sob controle. Formação com Alan Nicolas, na Academia Lendária.",
+    quote: {
+      text: "A linguagem de programação mais quente hoje é o inglês.",
+      author: "Andrej Karpathy",
+      source: "pesquisador de IA · ex-OpenAI e Tesla",
+    },
     refs: [
       { label: "Alan Nicolas — Academia Lendária", url: "https://www.academialendaria.ai/" },
       {

@@ -2477,10 +2477,21 @@ ul, ol {
 
 .lab-status::before {
   content: "";
-  width: 6px;
-  height: 6px;
+  width: 10px;
+  height: 10px;
   border-radius: 50%;
-  background: var(--sage);
+  background: var(--accent);
+  animation: pblip-core 2.6s ease-in-out infinite,
+    lab-status-ping 2.6s ease-out infinite;
+}
+
+@keyframes lab-status-ping {
+  0% { box-shadow: 0 0 0 0 color-mix(in srgb, var(--accent) 50%, transparent); }
+  70%, 100% { box-shadow: 0 0 0 8px color-mix(in srgb, var(--accent) 0%, transparent); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .lab-status::before { animation: none; }
 }
 
 .lab-since {
