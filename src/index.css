@@ -1447,9 +1447,19 @@ ul, ol {
   padding: 28px;
   border: 1px solid var(--line);
   border-radius: var(--radius);
+  /* solid fill so the orange glow stays behind the card */
   background: var(--paper);
   transform-origin: left center;
+  transition: border-color 0.25s ease, box-shadow 0.3s ease;
   will-change: transform, filter, opacity;
+}
+
+.pcard:hover {
+  border-color: var(--accent);
+  box-shadow:
+    0 0 0 1px var(--accent),
+    0 8px 44px -4px color-mix(in srgb, var(--accent) 70%, transparent),
+    0 0 70px -10px color-mix(in srgb, var(--accent) 55%, transparent);
 }
 
 /* journey marker — the phase glyph, centred above its card on the rail */
