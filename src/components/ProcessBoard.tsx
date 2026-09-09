@@ -247,21 +247,14 @@ export default function ProcessBoard() {
                   {ph.name} <span className="t-en">{ph.nameEn}</span>
                 </h3>
               </div>
-              <p className="pcard-line">
-                {ph.line}
-                <span className="t-en">{ph.lineEn}</span>
-              </p>
+              <p className="pcard-line">{ph.line}</p>
               <ul className="pcard-does">
-                {ph.does.map((d, k) => (
-                  <li key={d}>
-                    {d}
-                    <span className="t-en">{ph.doesEn[k]}</span>
-                  </li>
+                {ph.does.map((d) => (
+                  <li key={d}>{d}</li>
                 ))}
               </ul>
               <div className="pcard-artifact">
                 <span>{ph.artifact}</span>
-                <span className="t-en">{ph.artifactEn}</span>
               </div>
             </article>
           ))}

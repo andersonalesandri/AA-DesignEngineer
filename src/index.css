@@ -1609,28 +1609,22 @@ ul, ol {
   line-height: 1.42;
 }
 
-/* English secondary line in the process cards */
-.t-en {
+/* English title, under the PT phase name */
+.pcard-name .t-en {
   display: block;
   margin-top: 2px;
   font-family: var(--sans);
   font-style: normal;
   font-weight: 400;
-  font-size: 0.82em;
-  letter-spacing: 0;
-  line-height: 1.35;
+  font-size: 0.72em;
+  letter-spacing: 0.02em;
   color: var(--ink-mute);
-}
-
-.pcard-artifact .t-en {
-  font-size: 0.86em;
-  letter-spacing: 0.06em;
 }
 
 .pcard-does {
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 8px;
 }
 
 .pcard-does li {
