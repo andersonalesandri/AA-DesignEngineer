@@ -109,6 +109,24 @@ a {
   text-decoration: none;
 }
 
+/* custom orange ring + dot cursor on every interaction */
+a,
+button,
+[role="button"],
+summary,
+label[for],
+.pcard-artifact,
+.tag {
+  cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='40' height='40' viewBox='0 0 40 40'%3E%3Ccircle cx='20' cy='20' r='12.5' fill='none' stroke='%23f2621d' stroke-width='1.7'/%3E%3Ccircle cx='20' cy='20' r='3' fill='%23f2621d'/%3E%3C/svg%3E") 20 20, pointer;
+}
+
+.input,
+.textarea,
+input,
+textarea {
+  cursor: text;
+}
+
 button {
   font-family: inherit;
   cursor: pointer;
@@ -1477,7 +1495,7 @@ ul, ol {
     0 0 40px -16px color-mix(in srgb, var(--accent) 24%, transparent);
 }
 
-/* custom orange cursor (ring + centre dot) over the horizontal-scroll cards */
+/* the card version — a touch smaller than the site-wide one */
 .pcard,
 .apanel {
   cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='30' height='30' viewBox='0 0 30 30'%3E%3Ccircle cx='15' cy='15' r='9' fill='none' stroke='%23f2621d' stroke-width='1.6'/%3E%3Ccircle cx='15' cy='15' r='2.4' fill='%23f2621d'/%3E%3C/svg%3E") 15 15, pointer;
