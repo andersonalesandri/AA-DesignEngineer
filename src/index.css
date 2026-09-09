@@ -231,6 +231,19 @@ ul, ol {
   font-style: inherit;
 }
 
+/* on dark sections, the eyebrow and heading emphasis go orange */
+.tone-dark .eyebrow {
+  color: var(--accent);
+}
+.tone-dark .eyebrow::before {
+  background: var(--accent);
+  opacity: 0.55;
+}
+.tone-dark .gradient-text,
+.tone-dark .gradient-text-cool {
+  color: var(--accent);
+}
+
 .lede {
   margin-top: 22px;
   max-width: 60ch;
