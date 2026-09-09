@@ -16,13 +16,13 @@ export default function App() {
         <InterfaceReveal />
         <div className="section-divider section-divider--dotted" />
         <ProcessBoard />
-        <div className="section-divider" />
-        <Projects />
-        <div className="section-divider" />
+        <div className="tone-dark">
+          <Projects />
+        </div>
         <About />
-        <div className="section-divider" />
-        <Laboratory />
-        <div className="section-divider" />
+        <div className="tone-dark">
+          <Laboratory />
+        </div>
         <Contact />
       </main>
 

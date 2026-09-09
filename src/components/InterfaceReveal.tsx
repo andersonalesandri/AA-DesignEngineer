@@ -148,22 +148,10 @@ export default function InterfaceReveal() {
     };
   }, []);
 
-  useEffect(() => {
-    const row = rowRef.current;
-    if (!row) return;
-    const onMove = (e: MouseEvent) => {
-      const r = row.getBoundingClientRect();
-      const dx = (e.clientX - (r.left + r.width / 2)) / r.width;
-      row.style.setProperty("--rot", `${(dx * 5).toFixed(2)}deg`);
-    };
-    window.addEventListener("mousemove", onMove);
-    return () => window.removeEventListener("mousemove", onMove);
-  }, []);
-
   const draw = clamp(p * 2.6);
   const lineIdx = p < 0.42 ? 0 : p < 0.76 ? 1 : 2;
 
-  // staggered parallax: each phone enters from further down, at its own rate
+  // staggered parallax on entry only — each phone settles to rest and stays fixed
   const phoneStyle = (i: number) => {
     const ci = clamp((p - 0.22 - i * 0.1) / 0.32);
     const inv = 1 - ci;
@@ -171,7 +159,7 @@ export default function InterfaceReveal() {
     return {
       "--scr-op": ci,
       "--scr-blur": `${(inv * 5).toFixed(2)}px`,
-      transform: `translateY(${(inv * depth).toFixed(1)}px) rotate(calc(var(--rot, 0deg) * ${1 + i * 0.2}))`,
+      transform: `translateY(${(inv * depth).toFixed(1)}px)`,
     } as React.CSSProperties;
   };
   const wireOpacity = clamp(1.15 - p * 2.1);

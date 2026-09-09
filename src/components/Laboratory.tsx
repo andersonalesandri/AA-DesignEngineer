@@ -1,64 +1,70 @@
 import Reveal from "./Reveal";
-import { useInView } from "../hooks/useInView";
 
-const LAB_ITEMS = [
+type Ref = { label: string; url?: string };
+
+interface LabItem {
+  status: string;
+  since: string;
+  title: string;
+  desc: string;
+  quote?: { text: string; author: string; source?: string };
+  refs: Ref[];
+  tags: string[];
+}
+
+const LAB_ITEMS: LabItem[] = [
   {
-    icon: "🎨",
-    status: "EM ANDAMENTO",
-    statusColor: "#35d68e",
+    status: "Em andamento",
+    since: "desde 2022",
     title: "Aprofundamento em UX/UI Design & Arquitetura de Informação",
-    progressColor: "#4f7bff",
-    progress: 70,
-    tags: ["UX/UI", "Arquitetura de Informação"],
+    desc:
+      "Estudo sistemático de pesquisa com usuários, heurísticas de usabilidade e arquitetura de informação: como as pessoas constroem modelos mentais, como nomear, agrupar e hierarquizar conteúdo para que encontrem o que procuram, e como sustentar cada decisão com teste de usabilidade em vez de opinião. Base no NN/g e nos clássicos do campo.",
+    quote: {
+      text: "O bom design é, na verdade, muito mais difícil de perceber do que o design ruim — quando funciona, ele some da nossa frente.",
+      author: "Don Norman",
+      source: "O Design do Dia a Dia",
+    },
+    refs: [
+      { label: "Nielsen Norman Group", url: "https://www.nngroup.com/" },
+      {
+        label: "As 10 Heurísticas de Usabilidade de Jakob Nielsen",
+        url: "https://www.nngroup.com/articles/ten-usability-heuristics/",
+      },
+      { label: "“O Design do Dia a Dia” — Don Norman" },
+      { label: "“Information Architecture” — Rosenfeld, Morville & Arango (o livro do urso polar)" },
+    ],
+    tags: ["Pesquisa", "Heurísticas", "Arquitetura de Informação", "Teste de usabilidade"],
   },
   {
-    icon: "🧩",
-    status: "EM ANDAMENTO",
-    statusColor: "#35d68e",
-    title: "Desenvolvimento Front-End & Arquitetura de Componentes Web",
-    progressColor: "#9b6bff",
-    progress: 75,
-    tags: ["Front-End", "Componentes Web"],
+    status: "Em andamento",
+    since: "desde 2021",
+    title: "Front-End & Arquitetura de Componentes Web",
+    desc:
+      "Composição de componentes, design tokens, tipagem e acessibilidade na prática — construir bibliotecas que o time inteiro usa sem quebrar, com CSS moderno (grid, container queries, cascade layers), React e TypeScript. Foco em API de componente previsível, estados acessíveis e performance de renderização.",
+    refs: [
+      { label: "MDN Web Docs", url: "https://developer.mozilla.org/" },
+      { label: "web.dev — Google", url: "https://web.dev/" },
+      { label: "“Every Layout” — Heydon Pickering & Andy Bell" },
+      { label: "“Refactoring UI” — Adam Wathan & Steve Schoger" },
+    ],
+    tags: ["Design tokens", "Componentização", "CSS moderno", "Acessibilidade (WCAG)"],
   },
   {
-    icon: "🤖",
-    status: "ATIVO",
-    statusColor: "#f5a623",
-    title: "Treinamentos e Certificações em Cloud & Automação com Agentes de IA",
-    progressColor: "#f5a623",
-    progress: 60,
-    tags: ["Cloud", "Agentes de IA", "Automação"],
+    status: "Ativo",
+    since: "desde 2024",
+    title: "Cloud & Automação com Agentes de IA",
+    desc:
+      "Orquestração de agentes de IA em produção: engenharia de contexto e de prompt, definição de ferramentas e limites, avaliação de saídas e integração com fluxos reais via n8n, webhooks e filas — com deploy, observabilidade e custo sob controle.",
+    refs: [
+      {
+        label: "Anthropic — Building effective agents",
+        url: "https://www.anthropic.com/research/building-effective-agents",
+      },
+      { label: "Documentação do n8n", url: "https://docs.n8n.io/" },
+    ],
+    tags: ["Context engineering", "Orquestração de agentes", "n8n", "Observabilidade"],
   },
 ];
-
-function LabCard({ item }: { item: (typeof LAB_ITEMS)[number] }) {
-  const { ref, inView } = useInView<HTMLDivElement>(0.25);
-
-  return (
-    <div ref={ref} className="card">
-      <div className="lab-head">
-        <span className="lab-status" style={{ color: item.statusColor }}>
-          {item.status}
-        </span>
-      </div>
-      <div className="lab-icon">{item.icon}</div>
-      <div className="lab-title">{item.title}</div>
-      <div className="lab-progress-track">
-        <div
-          className="lab-progress-fill"
-          style={{ width: inView ? `${item.progress}%` : "0%", background: item.progressColor }}
-        />
-      </div>
-      <div className="lab-tags">
-        {item.tags.map((t) => (
-          <span key={t} className="tag">
-            {t}
-          </span>
-        ))}
-      </div>
-    </div>
-  );
-}
 
 export default function Laboratory() {
   return (
@@ -66,20 +72,63 @@ export default function Laboratory() {
       <Reveal>
         <span className="eyebrow">Em estudo</span>
         <h2 className="heading-xl">
-          Sempre explorando.
-          <br />
-          <span className="gradient-text">Nunca parando de evoluir.</span>
+          O que estudo <span className="gradient-text">enquanto entrego</span>.
         </h2>
         <p className="lede">
-          Formação e aperfeiçoamento contínuo — as frentes de estudo que mantenho
-          ativas em paralelo aos projetos.
+          Três frentes que mantenho ativas em paralelo aos projetos — cada uma
+          ancorada em fontes que confio, do NN/g aos clássicos do campo.
         </p>
       </Reveal>
 
       <div className="lab-grid">
         {LAB_ITEMS.map((item, i) => (
-          <Reveal key={item.title} delay={i * 90}>
-            <LabCard item={item} />
+          <Reveal key={item.title} delay={i * 80}>
+            <article className="lab-item">
+              <div className="lab-meta">
+                <span className="lab-status">{item.status}</span>
+                <span className="lab-since">{item.since}</span>
+              </div>
+
+              <div className="lab-body">
+                <h3 className="lab-title">{item.title}</h3>
+                <p className="lab-desc">{item.desc}</p>
+
+                {item.quote && (
+                  <blockquote className="lab-quote">
+                    “{item.quote.text}”
+                    <cite>
+                      — {item.quote.author}
+                      {item.quote.source ? `, ${item.quote.source}` : ""}
+                    </cite>
+                  </blockquote>
+                )}
+
+                <div className="lab-refs">
+                  <span className="lab-refs-label">Referências</span>
+                  <ul>
+                    {item.refs.map((r) => (
+                      <li key={r.label}>
+                        {r.url ? (
+                          <a href={r.url} target="_blank" rel="noreferrer">
+                            {r.label} ↗
+                          </a>
+                        ) : (
+                          r.label
+                        )}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+
+                <div className="lab-tags">
+                  {item.tags.map((t) => (
+                    <span key={t} className="tag">
+                      {t}
+                    </span>
+                  ))}
+                </div>
+              </div>
+            </article>
           </Reveal>
         ))}
       </div>
