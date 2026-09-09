@@ -277,12 +277,13 @@ ul, ol {
   border-bottom-color: rgba(241, 241, 238, 0.12);
 }
 .nav-wrap.on-dark .nav-logo { color: #f1f1ee; }
-.nav-wrap.on-dark .nav-link { color: rgba(241, 241, 238, 0.58); }
+.nav-wrap.on-dark .nav-link { color: #ff8547; }
 .nav-wrap.on-dark .nav-link:hover,
-.nav-wrap.on-dark .nav-link.active { color: #f1f1ee; }
-.nav-wrap.on-dark .nav-cta { color: #ff9a6b !important; }
-.nav-wrap.on-dark .nav-menu-label { color: rgba(241, 241, 238, 0.5); }
-.nav-wrap.on-dark .nav-burger span { background: #f1f1ee; }
+.nav-wrap.on-dark .nav-link.active { color: #ffab7f; }
+.nav-wrap.on-dark .nav-link.active { border-bottom-color: #ff8547; }
+.nav-wrap.on-dark .nav-cta { color: #ffab7f !important; }
+.nav-wrap.on-dark .nav-menu-label { color: #ff8547; }
+.nav-wrap.on-dark .nav-burger span { background: #ff8547; }
 
 .nav {
   display: flex;
@@ -1695,6 +1696,7 @@ ul, ol {
 }
 
 .arail-track {
+  position: relative;
   display: flex;
   gap: 24px;
   padding: 0 32px;
@@ -1703,7 +1705,21 @@ ul, ol {
   will-change: transform;
 }
 
+/* line threading the cards together */
+.arail-track::before {
+  content: "";
+  position: absolute;
+  left: 32px;
+  right: 32px;
+  top: 52px;
+  height: 2px;
+  background: var(--accent);
+  z-index: 0;
+}
+
 .apanel {
+  position: relative;
+  z-index: 1;
   flex: 0 0 auto;
   width: clamp(280px, 72vw, 400px);
   display: flex;
@@ -1823,6 +1839,7 @@ ul, ol {
     margin: 0;
     transform: none !important;
   }
+  .arail-track::before { display: none; }
   .apanel { width: auto; }
   .arail-progress { display: none; }
 }
@@ -1831,6 +1848,7 @@ ul, ol {
   .arail { height: auto; }
   .arail-sticky { position: static; height: auto; overflow: visible; }
   .arail-track { flex-wrap: wrap; transform: none !important; }
+  .arail-track::before { display: none; }
   .arail-progress { display: none; }
 }
 
