@@ -52,11 +52,15 @@ const GLYPHS: Record<string, ReactNode> = {
 
 type Phase = {
   n: string;
-  name: string;
   icon: keyof typeof GLYPHS;
+  name: string;
+  nameEn: string;
   line: string;
+  lineEn: string;
   does: string[];
+  doesEn: string[];
   artifact: string;
+  artifactEn: string;
 };
 
 const PHASES: Phase[] = [
@@ -64,57 +68,85 @@ const PHASES: Phase[] = [
     n: "01",
     icon: "discover",
     name: "Descoberta",
+    nameEn: "Discovery",
     line: "Entendo o negócio, as restrições e o que conta como sucesso.",
+    lineEn: "I map the business, the constraints and what counts as success.",
     does: ["Kickoff e entrevista com stakeholders", "Metas e métricas de sucesso", "Premissas e riscos"],
+    doesEn: ["Kickoff and stakeholder interviews", "Goals and success metrics", "Assumptions and risks"],
     artifact: "Brief",
+    artifactEn: "Brief",
   },
   {
     n: "02",
     icon: "research",
     name: "Pesquisa",
+    nameEn: "Research",
     line: "Ouço quem vai usar antes de desenhar qualquer tela.",
+    lineEn: "I talk to the people who'll use it before drawing a single screen.",
     does: ["Entrevistas com usuários", "Benchmark e análise competitiva", "Analytics e avaliação heurística"],
+    doesEn: ["User interviews", "Benchmarking and competitive analysis", "Analytics and heuristic evaluation"],
     artifact: "Quadro de achados",
+    artifactEn: "Findings board",
   },
   {
     n: "03",
     icon: "define",
     name: "Definição",
+    nameEn: "Definition",
     line: "Transformo o que ouvi num problema nítido e priorizado.",
+    lineEn: "I turn what I heard into a sharp, prioritized problem.",
     does: ["Síntese e insights", "Persona e mapa de jornada", "Arquitetura de informação", "Priorização (impacto × esforço)"],
+    doesEn: ["Synthesis and insights", "Persona and journey map", "Information architecture", "Prioritization (impact × effort)"],
     artifact: "Mapa de jornada",
+    artifactEn: "Journey map",
   },
   {
     n: "04",
     icon: "ideate",
     name: "Ideação",
+    nameEn: "Ideation",
     line: "Exploro caminhos rápido, no papel, antes de investir em pixel.",
+    lineEn: "I explore directions fast, on paper, before investing in pixels.",
     does: ["Sketching e Crazy-8s", "Fluxos e sitemap", "Wireframes de baixa fidelidade"],
+    doesEn: ["Sketching and Crazy-8s", "Flows and sitemap", "Low-fidelity wireframes"],
     artifact: "Wireframes",
+    artifactEn: "Wireframes",
   },
   {
     n: "05",
     icon: "prototype",
     name: "Protótipo & teste",
+    nameEn: "Prototype & test",
     line: "Dou fidelidade e testo com gente de verdade — e itero.",
+    lineEn: "I raise fidelity, test with real people — and iterate.",
     does: ["UI de alta fidelidade", "Design system e tokens", "Protótipo interativo", "Teste de usabilidade"],
+    doesEn: ["High-fidelity UI", "Design system and tokens", "Interactive prototype", "Usability testing"],
     artifact: "Protótipo Figma",
+    artifactEn: "Figma prototype",
   },
   {
     n: "06",
     icon: "deliver",
     name: "Entrega",
+    nameEn: "Delivery",
     line: "Construo em código, sem perder fidelidade do design.",
+    lineEn: "I build it in code, without losing design fidelity.",
     does: ["HTML semântico, React, TypeScript", "Componentização e acessibilidade (WCAG)", "Automação de fluxos com agentes de IA"],
+    doesEn: ["Semantic HTML, React, TypeScript", "Componentization and accessibility (WCAG)", "Workflow automation with AI agents"],
     artifact: "Componentes + PR",
+    artifactEn: "Components + PR",
   },
   {
     n: "07",
     icon: "result",
     name: "Resultado",
+    nameEn: "Outcome",
     line: "Meço contra as métricas combinadas e registro o aprendizado.",
+    lineEn: "I measure against the agreed metrics and capture the learnings.",
     does: ["Analytics, SEO técnico, performance", "Feedback e retrospectiva", "Antes / depois"],
+    doesEn: ["Analytics, technical SEO, performance", "Feedback and retrospective", "Before / after"],
     artifact: "Antes / depois",
+    artifactEn: "Before / after",
   },
 ];
 
@@ -213,16 +245,25 @@ export default function ProcessBoard() {
               <span className="pcard-n">{ph.n}</span>
               <div className="pcard-namerow">
                 <span className="pcard-blip" aria-hidden="true" />
-                <h3 className="pcard-name">{ph.name}</h3>
+                <h3 className="pcard-name">
+                  {ph.name} <span className="t-en">{ph.nameEn}</span>
+                </h3>
               </div>
-              <p className="pcard-line">{ph.line}</p>
+              <p className="pcard-line">
+                {ph.line}
+                <span className="t-en">{ph.lineEn}</span>
+              </p>
               <ul className="pcard-does">
-                {ph.does.map((d) => (
-                  <li key={d}>{d}</li>
+                {ph.does.map((d, k) => (
+                  <li key={d}>
+                    {d}
+                    <span className="t-en">{ph.doesEn[k]}</span>
+                  </li>
                 ))}
               </ul>
               <div className="pcard-artifact">
                 <span>{ph.artifact}</span>
+                <span className="t-en">{ph.artifactEn}</span>
               </div>
             </article>
           ))}

@@ -1638,10 +1638,28 @@ ul, ol {
   line-height: 1.42;
 }
 
+/* English secondary line in the process cards */
+.t-en {
+  display: block;
+  margin-top: 2px;
+  font-family: var(--sans);
+  font-style: normal;
+  font-weight: 400;
+  font-size: 0.82em;
+  letter-spacing: 0;
+  line-height: 1.35;
+  color: var(--ink-mute);
+}
+
+.pcard-artifact .t-en {
+  font-size: 0.86em;
+  letter-spacing: 0.06em;
+}
+
 .pcard-does {
   display: flex;
   flex-direction: column;
-  gap: 8px;
+  gap: 10px;
 }
 
 .pcard-does li {
