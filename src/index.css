@@ -1037,7 +1037,7 @@ ul, ol {
   position: absolute;
   left: 32px;
   right: 32px;
-  top: 28px;
+  top: 43px;
   height: 1px;
   background: linear-gradient(
     90deg,
@@ -1065,76 +1065,76 @@ ul, ol {
   will-change: transform, filter, opacity;
 }
 
-/* journey node — centred above its card, on the rail */
-.pcard-node {
+/* journey marker — the phase glyph, centred above its card on the rail */
+.pcard-marker {
   position: absolute;
-  top: -55px;
+  top: -58px;
   left: 50%;
-  width: 11px;
-  height: 11px;
-  margin-left: -5.5px;
+  width: 46px;
+  height: 46px;
+  margin-left: -23px;
+  display: grid;
+  place-items: center;
   border-radius: 50%;
-  background: var(--accent);
-  animation: pnode-core 2.6s ease-in-out infinite;
-  animation-delay: calc(var(--i, 0) * 0.3s);
+  border: 1px solid color-mix(in srgb, var(--accent) 55%, transparent);
+  background: var(--paper);
+  color: var(--accent);
 }
 
-/* stem from the node down to the card */
-.pcard-node::before {
+.pcard-marker svg {
+  width: 23px;
+  height: 23px;
+}
+
+/* stem from the marker down to the card */
+.pcard-marker::before {
   content: "";
   position: absolute;
-  top: 11px;
+  top: 46px;
   left: 50%;
   width: 1px;
-  height: 44px;
+  height: 12px;
   background: var(--accent);
   opacity: 0.4;
   transform: translateX(-50%);
 }
 
-.pcard-node::after {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 11px;
-  height: 11px;
+/* the blinking beacon, beside each card title */
+.pcard-namerow {
+  display: flex;
+  align-items: center;
+  gap: 11px;
+}
+
+.pcard-blip {
+  position: relative;
+  flex-shrink: 0;
+  width: 9px;
+  height: 9px;
   border-radius: 50%;
   background: var(--accent);
-  animation: pnode-ping 2.6s ease-out infinite;
+  animation: pblip-core 2.6s ease-in-out infinite;
   animation-delay: calc(var(--i, 0) * 0.3s);
 }
 
-@keyframes pnode-core {
+.pcard-blip::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  background: var(--accent);
+  animation: pblip-ping 2.6s ease-out infinite;
+  animation-delay: calc(var(--i, 0) * 0.3s);
+}
+
+@keyframes pblip-core {
   0%, 100% { opacity: 1; }
-  50% { opacity: 0.45; }
+  50% { opacity: 0.4; }
 }
 
-@keyframes pnode-ping {
+@keyframes pblip-ping {
   0% { transform: scale(1); opacity: 0.55; filter: blur(0); }
-  70%, 100% { transform: scale(2.8); opacity: 0; filter: blur(5px); }
-}
-
-.pcard-top {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-}
-
-.pcard-ic {
-  display: inline-flex;
-  width: 30px;
-  height: 30px;
-  align-items: center;
-  justify-content: center;
-  border: 1px solid color-mix(in srgb, var(--accent) 40%, transparent);
-  border-radius: var(--radius-sm);
-  color: var(--accent);
-}
-
-.pcard-ic svg {
-  width: 18px;
-  height: 18px;
+  70%, 100% { transform: scale(3); opacity: 0; filter: blur(4px); }
 }
 
 .pcard-n {
@@ -1249,28 +1249,25 @@ ul, ol {
   }
   .pboard-track { padding-top: 32px; }
   .pboard-track::before { display: none; }
-  .pcard-node {
+  .pcard-marker {
     position: static;
-    margin: 0 0 6px;
-    animation: none;
+    margin: 0 0 14px;
   }
-  .pcard-node::before { display: none; }
-  .pcard-node::after { display: none; }
+  .pcard-marker::before { display: none; }
   .pboard-progress { display: none; }
 }
 
 @media (prefers-reduced-motion: reduce) {
   .pboard { height: auto; }
   .pboard-sticky { position: static; height: auto; overflow: visible; }
-  .pboard-track { flex-wrap: wrap; padding-top: 32px; transform: none !important; }
-  .pboard-track::before { display: none; }
+  .pboard-track { flex-wrap: wrap; padding-top: 88px; transform: none !important; }
   .pcard {
     transform: none !important;
     filter: none !important;
     opacity: 1 !important;
   }
-  .pcard-node { position: static; margin: 0 0 6px; animation: none; }
-  .pcard-node::before, .pcard-node::after { display: none; }
+  .pcard-blip, .pcard-blip::after { animation: none; }
+  .pcard-blip::after { display: none; }
   .pboard-progress { display: none; }
 }
 

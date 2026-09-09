@@ -190,14 +190,14 @@ export default function ProcessBoard() {
               key={ph.n}
               style={{ ...cardStyle(i), ["--i" as string]: i }}
             >
-              <span className="pcard-node" aria-hidden="true" />
-              <div className="pcard-top">
-                <span className="pcard-ic" aria-hidden="true">
-                  {GLYPHS[ph.icon]}
-                </span>
-                <span className="pcard-n">{ph.n}</span>
+              <span className="pcard-marker" aria-hidden="true">
+                {GLYPHS[ph.icon]}
+              </span>
+              <span className="pcard-n">{ph.n}</span>
+              <div className="pcard-namerow">
+                <span className="pcard-blip" aria-hidden="true" />
+                <h3 className="pcard-name">{ph.name}</h3>
               </div>
-              <h3 className="pcard-name">{ph.name}</h3>
               <p className="pcard-line">{ph.line}</p>
               <ul className="pcard-does">
                 {ph.does.map((d) => (
