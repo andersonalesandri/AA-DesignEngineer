@@ -8,7 +8,6 @@ interface LabItem {
   title: string;
   desc: string;
   quote?: { text: string; author: string; source?: string };
-  principle?: { kw: string; text: string; from: string };
   refs: Ref[];
   tags: string[];
 }
@@ -55,11 +54,6 @@ const LAB_ITEMS: LabItem[] = [
       { label: "web.dev — Google", url: "https://web.dev/" },
       { label: "“Refactoring UI” — Adam Wathan & Steve Schoger" },
     ],
-    principle: {
-      kw: "Aprender construindo",
-      text: " — projeto real desde o primeiro dia.",
-      from: "Rocketseat · Diego Fernandes",
-    },
     tags: ["Design tokens", "Componentização", "CSS moderno", "Acessibilidade (WCAG)"],
   },
   {
@@ -81,11 +75,6 @@ const LAB_ITEMS: LabItem[] = [
       },
       { label: "Documentação do n8n", url: "https://docs.n8n.io/" },
     ],
-    principle: {
-      kw: "IA First",
-      text: " — começar pelo processo com IA, não pela ferramenta.",
-      from: "Alan Nicolas · Academia Lendária",
-    },
     tags: ["Context engineering", "Orquestração de agentes", "n8n", "Observabilidade"],
   },
 ];
@@ -96,7 +85,7 @@ export default function Laboratory() {
       <Reveal>
         <span className="eyebrow">Em estudo</span>
         <h2 className="heading-xl">
-          O que estudo <span className="gradient-text">enquanto entrego</span>.
+          O que estudo <span className="gradient-text kw">enquanto entrego</span>.
         </h2>
         <p className="lede">
           Três frentes que mantenho ativas em paralelo aos projetos — cada uma
@@ -125,17 +114,6 @@ export default function Laboratory() {
                       {item.quote.source ? `, ${item.quote.source}` : ""}
                     </cite>
                   </blockquote>
-                )}
-
-                {item.principle && (
-                  <div className="lab-principle">
-                    <span className="lab-principle-label">Princípio que carrego</span>
-                    <p>
-                      <b>{item.principle.kw}</b>
-                      {item.principle.text}
-                    </p>
-                    <cite>{item.principle.from}</cite>
-                  </div>
                 )}
 
                 <div className="lab-refs">
