@@ -44,38 +44,43 @@
 }
 
 /* dark-toned band — remaps the palette tokens for the sections inside it.
-   Warm, accent-derived. The page steps down through these toward the footer. */
+   The page descends from the full accent colour down to near-black at the footer. */
 .tone-dark {
-  --paper: #2a211c;
-  --paper-raise: #342a24;
-  --ink: #f2eee4;
-  --ink-soft: #c8c1b2;
-  --ink-mute: #948c7c;
-  --line: #3f362d;
-  --line-strong: #544a3d;
-  --accent: #d8825a;
-  --accent-soft: #e59d76;
-  --sage: #7d9475;
+  --paper: #6a2e20;
+  --paper-raise: #5c2820;
+  --ink: #fdf8f0;
+  --ink-soft: rgba(253, 248, 240, 0.82);
+  --ink-mute: rgba(253, 248, 240, 0.58);
+  --line: rgba(253, 248, 240, 0.16);
+  --line-strong: rgba(253, 248, 240, 0.3);
+  --accent: #f4c9b6;
+  --accent-soft: #f4c9b6;
+  --sage: #a7c3a0;
   --card-border: var(--line);
   --card-border-hover: var(--line-strong);
   background: var(--paper);
   color: var(--ink);
 }
 
-/* warmer step — close to the bullet/accent colour */
+/* the bullet/accent colour itself */
 .tone-dark.tone-tint {
-  --paper: #3d2119;
-  --paper-raise: #48281e;
-  --line: #56342a;
-  --line-strong: #6b4437;
+  --paper: #a8432a;
+  --paper-raise: #9c3d27;
+  --accent: #fdf8f0;
+  --accent-soft: #fdf8f0;
 }
 
 /* darkest step — the close of the page + footer */
 .tone-dark.tone-deep {
   --paper: #1b1512;
   --paper-raise: #241c17;
+  --ink: #f2eee4;
+  --ink-soft: #c8c1b2;
+  --ink-mute: #948c7c;
   --line: #322a24;
   --line-strong: #443a31;
+  --accent: #d8825a;
+  --accent-soft: #e59d76;
 }
 
 * {
@@ -741,7 +746,7 @@ ul, ol {
 
 .iph {
   position: relative;
-  height: clamp(380px, 58vh, 580px);
+  height: clamp(420px, 64vh, 646px);
   width: auto;
   aspect-ratio: 9 / 19.5;
   padding: 6px;
@@ -1372,7 +1377,7 @@ ul, ol {
   padding: 30px;
   border: 1px solid var(--line);
   border-radius: var(--radius);
-  background: var(--paper);
+  background: var(--paper-raise);
 }
 
 .apanel-glyph {

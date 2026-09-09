@@ -19,7 +19,9 @@ export default function App() {
         <div className="tone-dark tone-tint">
           <Projects />
         </div>
-        <About />
+        <div className="tone-dark tone-tint">
+          <About />
+        </div>
         <div className="tone-dark">
           <Laboratory />
         </div>
