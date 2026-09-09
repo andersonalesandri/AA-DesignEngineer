@@ -159,6 +159,13 @@ ul, ol {
   margin: 0 auto;
 }
 
+/* sketch-style break — echoes the wireframe strokes */
+.section-divider--dotted {
+  height: 0;
+  background: none;
+  border-top: 2px dotted var(--line-strong);
+}
+
 .eyebrow {
   display: inline-flex;
   align-items: center;

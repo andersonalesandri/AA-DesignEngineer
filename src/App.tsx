@@ -15,7 +15,7 @@ export default function App() {
       <main>
         <Opening />
         <InterfaceReveal />
-        <div className="section-divider" />
+        <div className="section-divider section-divider--dotted" />
         <About />
         <div className="section-divider" />
         <CommandCenter />
