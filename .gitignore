@@ -5,3 +5,6 @@ dist-ssr
 .DS_Store
 *.tsbuildinfo
 Videos/
+
+# raw source clips (keep only cut versions in public/media)
+/videos

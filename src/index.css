@@ -455,6 +455,38 @@ ul, ol {
   padding-bottom: 108px;
 }
 
+.hero-bg {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  overflow: hidden;
+  pointer-events: none;
+  -webkit-mask-image: linear-gradient(to bottom, #000 55%, transparent 100%);
+  mask-image: linear-gradient(to bottom, #000 55%, transparent 100%);
+}
+
+.hero-bg-video {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0.5;
+  mix-blend-mode: multiply;
+}
+
+@media (max-width: 720px) {
+  .hero-bg { display: none; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-bg-video { display: none; }
+  .hero-bg {
+    background: center / cover no-repeat url("/media/hero-texture.jpg");
+    opacity: 0.4;
+  }
+}
+
 @media (max-width: 720px) {
   .hero { padding-top: 72px; padding-bottom: 76px; }
 }

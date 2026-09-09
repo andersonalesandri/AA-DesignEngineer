@@ -5,6 +5,21 @@ const EMAIL = "anderson_alessandri@hotmail.com";
 export default function Hero() {
   return (
     <section id="home" className="section hero">
+      <div className="hero-bg" aria-hidden="true">
+        <video
+          className="hero-bg-video"
+          autoPlay
+          muted
+          loop
+          playsInline
+          preload="none"
+          poster="/media/hero-texture.jpg"
+        >
+          <source src="/media/hero-texture.webm" type="video/webm" />
+          <source src="/media/hero-texture.mp4" type="video/mp4" />
+        </video>
+      </div>
+
       <Reveal>
         <span className="eyebrow">Designer de Interface · Rio de Janeiro</span>
 
