@@ -1,5 +1,6 @@
 import Nav from "./components/Nav";
 import Hero from "./components/Hero";
+import ScrollScene from "./components/ScrollScene";
 import About from "./components/About";
 import CommandCenter from "./components/CommandCenter";
 import Projects from "./components/Projects";
@@ -13,6 +14,19 @@ export default function App() {
       <Nav />
       <main>
         <Hero />
+        <ScrollScene
+          id="processo"
+          src="/media/scrub-process.mp4"
+          poster="/media/scrub-process.jpg"
+          eyebrow="O processo, quadro a quadro"
+          track={2.2}
+          captions={[
+            "Todo projeto começa numa mesa vazia.",
+            "Pesquisa — ouço quem vai usar antes de desenhar.",
+            "Definição — o problema fica nítido.",
+            "Só então a interface aparece.",
+          ]}
+        />
         <div className="section-divider" />
         <About />
         <div className="section-divider" />
