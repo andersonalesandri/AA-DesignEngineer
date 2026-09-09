@@ -28,8 +28,9 @@ const PRINCIPLES: Principle[] = [
   {
     glyph: (
       <svg viewBox="0 0 24 24" {...S}>
-        <rect x="4" y="4" width="16" height="16" rx="3" />
-        <path d="M12 8.5v7M8.5 12h7" />
+        <circle cx="12" cy="12" r="9" />
+        <circle cx="12" cy="12" r="5" />
+        <circle cx="12" cy="12" r="1.6" fill="currentColor" />
       </svg>
     ),
     title: "Design system primeiro",
