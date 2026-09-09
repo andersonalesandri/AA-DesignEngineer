@@ -500,8 +500,8 @@ ul, ol {
 
 .opening-film {
   transition: opacity 0.15s linear;
-  -webkit-mask-image: radial-gradient(135% 115% at 50% 46%, #000 26%, transparent 78%);
-  mask-image: radial-gradient(135% 115% at 50% 46%, #000 26%, transparent 78%);
+  -webkit-mask-image: radial-gradient(135% 118% at 50% 46%, #000 40%, transparent 82%);
+  mask-image: radial-gradient(135% 118% at 50% 46%, #000 40%, transparent 82%);
 }
 
 .opening-hero,
@@ -931,6 +931,243 @@ ul, ol {
   .ireveal-caption { position: static; min-height: 0; }
   .ireveal-caption p { position: static; opacity: 1; transform: none; }
   .ireveal-caption p:not(.is-on) { display: none; }
+}
+
+/* ------------------------------------------------------------------ */
+/* Process board — horizontal, pinned                                 */
+/* ------------------------------------------------------------------ */
+
+.pboard {
+  position: relative;
+  height: 460vh;
+  background: var(--paper);
+}
+
+.pboard-sticky {
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.pboard-head {
+  max-width: var(--maxw);
+  width: 100%;
+  margin: 0 auto;
+  padding: 11vh 32px 0;
+  flex-shrink: 0;
+}
+
+.pboard-head .heading-xl {
+  margin-top: 14px;
+  font-size: clamp(1.5rem, 3.2vw, 2.5rem);
+  max-width: 20ch;
+}
+
+.pboard-track {
+  position: relative;
+  display: flex;
+  gap: 26px;
+  padding: 0 32px;
+  margin: auto 0;
+  align-items: stretch;
+  will-change: transform;
+}
+
+/* the journey line running through every card's node */
+.pboard-track::before {
+  content: "";
+  position: absolute;
+  left: 32px;
+  right: 32px;
+  top: 46px;
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    var(--accent) 4%,
+    color-mix(in srgb, var(--accent) 45%, transparent) 50%,
+    var(--accent) 96%,
+    transparent
+  );
+  opacity: 0.4;
+}
+
+.pcard {
+  position: relative;
+  flex: 0 0 auto;
+  width: clamp(280px, 74vw, 410px);
+  display: flex;
+  flex-direction: column;
+  gap: 13px;
+  padding: 54px 28px 28px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--paper);
+  transform-origin: left center;
+  will-change: transform, filter, opacity;
+}
+
+/* pulsing journey node — accent of the hero's "e o processo" */
+.pcard-node {
+  position: absolute;
+  top: 41px;
+  left: 28px;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--accent);
+  animation: pnode-core 2.6s ease-in-out infinite;
+  animation-delay: calc(var(--i, 0) * 0.3s);
+}
+
+.pcard-node::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  background: var(--accent);
+  animation: pnode-ping 2.6s ease-out infinite;
+  animation-delay: calc(var(--i, 0) * 0.3s);
+}
+
+@keyframes pnode-core {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.45; }
+}
+
+@keyframes pnode-ping {
+  0% { transform: scale(1); opacity: 0.55; filter: blur(0); }
+  70%, 100% { transform: scale(2.8); opacity: 0; filter: blur(5px); }
+}
+
+.pcard-n {
+  font-family: var(--display);
+  font-size: 0.95rem;
+  color: var(--accent);
+}
+
+.pcard-name {
+  font-family: var(--display);
+  font-weight: 500;
+  font-size: 1.5rem;
+}
+
+.pcard-line {
+  font-family: var(--display);
+  font-style: italic;
+  color: var(--ink-soft);
+  font-size: 1rem;
+  line-height: 1.42;
+}
+
+.pcard-does {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.pcard-does li {
+  position: relative;
+  padding-left: 16px;
+  font-size: 0.85rem;
+  color: var(--ink-soft);
+  line-height: 1.5;
+}
+
+.pcard-does li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.5em;
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: var(--accent);
+}
+
+.pcard-artifact {
+  margin-top: auto;
+  border: 1px dashed var(--line-strong);
+  border-radius: var(--radius-sm);
+  padding: 14px;
+  text-align: center;
+}
+
+.pcard-artifact span {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--ink-mute);
+}
+
+.pboard-progress {
+  max-width: var(--maxw);
+  width: 100%;
+  margin: 0 auto;
+  padding: 0 32px 6vh;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  flex-shrink: 0;
+}
+
+.pboard-count {
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  color: var(--ink-mute);
+}
+
+.pboard-rail {
+  position: relative;
+  flex: 1;
+  height: 2px;
+  background: var(--line);
+}
+
+.pboard-fill {
+  position: absolute;
+  inset: 0;
+  transform-origin: left;
+  background: var(--accent);
+  transition: transform 0.1s linear;
+}
+
+@media (max-width: 720px) {
+  .pboard { height: auto; }
+  .pboard-sticky { position: static; height: auto; overflow: visible; }
+  .pboard-head { padding: 64px 22px 0; }
+  .pboard-track {
+    flex-direction: column;
+    padding: 32px 22px;
+    margin: 0;
+    transform: none !important;
+  }
+  .pcard {
+    width: auto;
+    transform: none !important;
+    filter: none !important;
+    opacity: 1 !important;
+  }
+  .pboard-progress { display: none; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .pboard { height: auto; }
+  .pboard-sticky { position: static; height: auto; overflow: visible; }
+  .pboard-track { flex-wrap: wrap; transform: none !important; }
+  .pcard {
+    transform: none !important;
+    filter: none !important;
+    opacity: 1 !important;
+  }
+  .pcard-node, .pcard-node::after { animation: none; }
+  .pcard-node::after { display: none; }
+  .pboard-progress { display: none; }
 }
 
 /* ------------------------------------------------------------------ */

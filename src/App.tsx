@@ -1,10 +1,9 @@
 import Nav from "./components/Nav";
 import Opening from "./components/Opening";
 import InterfaceReveal from "./components/InterfaceReveal";
-import About from "./components/About";
-import CommandCenter from "./components/CommandCenter";
+import ProcessBoard from "./components/ProcessBoard";
 import Projects from "./components/Projects";
-import Skills from "./components/Skills";
+import About from "./components/About";
 import Laboratory from "./components/Laboratory";
 import Contact from "./components/Contact";
 
@@ -16,13 +15,11 @@ export default function App() {
         <Opening />
         <InterfaceReveal />
         <div className="section-divider section-divider--dotted" />
-        <About />
-        <div className="section-divider" />
-        <CommandCenter />
+        <ProcessBoard />
         <div className="section-divider" />
         <Projects />
         <div className="section-divider" />
-        <Skills />
+        <About />
         <div className="section-divider" />
         <Laboratory />
         <div className="section-divider" />

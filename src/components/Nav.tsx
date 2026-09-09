@@ -1,11 +1,9 @@
 import { useEffect, useState } from "react";
 
 const LINKS = [
-  { id: "home", label: "Home" },
-  { id: "identity", label: "Identidade" },
-  { id: "workflow", label: "Workflow" },
+  { id: "processo", label: "Processo" },
   { id: "projects", label: "Projetos" },
-  { id: "skills", label: "Skills" },
+  { id: "identity", label: "Quem faz" },
   { id: "lab", label: "Lab" },
 ];
 

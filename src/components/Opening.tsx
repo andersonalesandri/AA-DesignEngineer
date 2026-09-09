@@ -75,7 +75,7 @@ export default function Opening() {
   const heroOut = clamp(p / 0.15);
   const filmIn = clamp((p - 0.1) / 0.13);
   const filmOut = clamp((p - 0.9) / 0.1);
-  const filmOpacity = filmIn * (1 - filmOut) * 0.42;
+  const filmOpacity = filmIn * (1 - filmOut) * 0.62;
   const capIdx = clamp(
     Math.floor(((p - 0.15) / 0.78) * CAPS.length),
     0,
