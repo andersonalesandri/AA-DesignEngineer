@@ -1477,10 +1477,10 @@ ul, ol {
     0 0 40px -16px color-mix(in srgb, var(--accent) 24%, transparent);
 }
 
-/* custom orange reticle cursor over the horizontal-scroll cards */
+/* custom orange cursor (ring + centre dot) over the horizontal-scroll cards */
 .pcard,
 .apanel {
-  cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='34' height='34' viewBox='0 0 34 34'%3E%3Ccircle cx='17' cy='17' r='10.5' fill='none' stroke='%23f2621d' stroke-width='1.6'/%3E%3Ccircle cx='17' cy='17' r='2.2' fill='%23f2621d'/%3E%3Cpath d='M17 3.5v4.5M17 26v4.5M3.5 17h4.5M26 17h4.5' stroke='%23f2621d' stroke-width='1.6' stroke-linecap='round'/%3E%3C/svg%3E") 17 17, pointer;
+  cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='30' height='30' viewBox='0 0 30 30'%3E%3Ccircle cx='15' cy='15' r='9' fill='none' stroke='%23f2621d' stroke-width='1.6'/%3E%3Ccircle cx='15' cy='15' r='2.4' fill='%23f2621d'/%3E%3C/svg%3E") 15 15, pointer;
 }
 
 /* cursor-follow gradient glow — shared by the horizontal-scroll cards */
