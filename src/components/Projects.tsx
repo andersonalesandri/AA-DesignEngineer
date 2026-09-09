@@ -24,6 +24,7 @@ const PROJECTS: Project[] = [
     role: "Pesquisa, UX writing, UI e build",
     status: "No ar · em evolução",
     link: "https://ianapratica-three.vercel.app/",
+    image: "/media/case-ianapratica.jpg",
     tags: ["Arquitetura de Informação", "UX Writing", "Design System", "Claude Code"],
     process: [
       {
@@ -59,6 +60,7 @@ const PROJECTS: Project[] = [
     role: "Discovery, UX, UI e build",
     status: "No ar",
     link: "https://corretordeimovelrj.com.br/",
+    image: "/media/case-christian.jpg",
     tags: ["Discovery", "Fluxo de Conversão", "Design System", "Front-end"],
     process: [
       {
